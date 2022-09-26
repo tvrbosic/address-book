@@ -7,14 +7,15 @@ import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => {
   const { isLoading, error, sendRequest } = useHttpRequest();
+
   let navigate = useNavigate();
 
-  const handleResponse = (data) => {
+  const handleSuccessfulLogin = (data) => {
     console.log(data);
     navigate('/contacts');
   };
 
-  const loginHandler = (event) => {
+  const loginHandler = (event, email, password) => {
     event.preventDefault();
     sendRequest(
       {
@@ -23,15 +24,15 @@ const LoginPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: { email: 'user@email.com', password: 'user' },
+        body: { email, password },
       },
-      handleResponse
+      handleSuccessfulLogin
     );
     console.log(error);
   };
 
   return (
-    <Container>
+    <Container fluid className={styles.container}>
       <Stack
         className={`${styles.layout} justify-content-center align-items-center`}>
         <h1 className={`${styles.title} text-center`}>Address Book App</h1>
