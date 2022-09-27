@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
@@ -7,12 +6,11 @@ import useHttpRequest from '../hooks/use-http-requst';
 import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => {
-  const { isLoading, error, sendRequest } = useHttpRequest();
+  const { error, sendRequest } = useHttpRequest();
 
   let navigate = useNavigate();
 
   const handleSuccessfulLogin = (data) => {
-    console.log(data);
     localStorage.setItem('token', data.accessToken);
     navigate('/contacts');
   };
@@ -31,11 +29,6 @@ const LoginPage = () => {
       handleSuccessfulLogin
     );
   };
-
-  // TODO: Handle error
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
 
   return (
     <Container fluid className={styles.container}>

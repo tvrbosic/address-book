@@ -1,5 +1,13 @@
+import { Container } from 'react-bootstrap';
+
+import Header from '../components/Header';
+
 const ContactsPage = () => {
-  return <div>Contacts</div>;
+  return (
+    <Container fluid className='p-0'>
+      <Header />
+    </Container>
+  );
 };
 
 export default ContactsPage;
