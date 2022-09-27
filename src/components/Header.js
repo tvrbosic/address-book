@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { BoxArrowRight } from 'react-bootstrap-icons';
 
 const Header = (props) => {
   const logoutHandler = () => {
@@ -24,8 +25,11 @@ const Header = (props) => {
           </Nav>
           <Nav>
             <NavDropdown title='User' id='basic-nav-dropdown'>
-              <NavDropdown.Item onClick={logoutHandler}>
+              <NavDropdown.Item
+                onClick={logoutHandler}
+                className='d-flex justify-content-around align-items-center'>
                 Logout
+                <BoxArrowRight className='fs-4' />
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
