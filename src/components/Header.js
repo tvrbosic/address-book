@@ -1,10 +1,22 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useNavigate } from 'react-router-dom';
+
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight } from 'react-bootstrap-icons';
 
+import { userActions } from '../store/user-slice';
+
 const Header = (props) => {
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
   const logoutHandler = () => {
     localStorage.removeItem('token');
+    dispatch(userActions.logout());
+    navigate('/');
   };
 
   return (
@@ -24,7 +36,7 @@ const Header = (props) => {
             </Nav.Link>
           </Nav>
           <Nav>
-            <NavDropdown title='User' id='basic-nav-dropdown'>
+            <NavDropdown title={`${user}`} id='basic-nav-dropdown'>
               <NavDropdown.Item
                 onClick={logoutHandler}
                 className='d-flex justify-content-around align-items-center'>

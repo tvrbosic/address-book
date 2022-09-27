@@ -1,22 +1,27 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
 import styles from './LoginPage.module.css';
 import useHttpRequest from '../hooks/use-http-requst';
+import { userActions } from '../store/user-slice';
 import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => {
   const { error, sendRequest } = useHttpRequest();
-
+  const dispatch = useDispatch();
   let navigate = useNavigate();
 
   const handleSuccessfulLogin = (data) => {
     localStorage.setItem('token', data.accessToken);
+    dispatch(userActions.login(data.accessToken));
     navigate('/contacts');
   };
 
   const loginRequest = (event, email, password) => {
     event.preventDefault();
+    dispatch(userActions.setUser(email));
     sendRequest(
       {
         url: 'http://localhost:3001/login',
