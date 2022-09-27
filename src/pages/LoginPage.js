@@ -5,7 +5,7 @@ import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
 import styles from './LoginPage.module.css';
 import useHttpRequest from '../hooks/use-http-requst';
-import { userActions } from '../store/user-slice';
+import { login } from '../store/user-actions';
 import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => {
@@ -13,9 +13,8 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const handleSuccessfulLogin = (data) => {
-    localStorage.setItem('token', data.accessToken);
-    dispatch(userActions.login(data.accessToken));
+  const loginSuccessHandler = (data) => {
+    dispatch(login(data.user.email, data.accessToken));
     navigate('/contacts');
   };
 
@@ -24,9 +23,6 @@ const LoginPage = () => {
     // Clear storage
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    // Set new user to storage and app state
-    localStorage.setItem('user', email);
-    dispatch(userActions.setUser(email));
     // Send login request
     sendRequest(
       {
@@ -37,7 +33,7 @@ const LoginPage = () => {
         },
         body: { email, password },
       },
-      handleSuccessfulLogin
+      loginSuccessHandler
     );
   };
 

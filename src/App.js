@@ -1,20 +1,20 @@
+import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { userActions } from './store/user-slice';
+import { initializeStoredSession } from './store/user-actions';
 import LoginPage from './pages/LoginPage';
 import ContactsPage from './pages/ContactsPage';
 
 function App() {
-  const userLoggedIn = useSelector((state) => state.user.loggedIn);
+  // Initialize application session from existing one
   const dispatch = useDispatch();
 
-  const storedToken = localStorage.getItem('token');
+  dispatch(initializeStoredSession());
 
-  if (storedToken) {
-    dispatch(userActions.setUser(localStorage.getItem('user')));
-    dispatch(userActions.login(storedToken));
-  }
+  const userLoggedIn = useSelector((state) => state.user.loggedIn);
+
+  console.log(userLoggedIn);
 
   return (
     <>
