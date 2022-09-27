@@ -14,6 +14,7 @@ const Header = (props) => {
   let navigate = useNavigate();
 
   const logoutHandler = () => {
+    localStorage.removeItem('user');
     localStorage.removeItem('token');
     dispatch(userActions.logout());
     navigate('/');

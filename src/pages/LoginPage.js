@@ -21,6 +21,7 @@ const LoginPage = () => {
 
   const loginRequest = (event, email, password) => {
     event.preventDefault();
+    localStorage.setItem('user', email);
     dispatch(userActions.setUser(email));
     sendRequest(
       {
