@@ -12,10 +12,11 @@ const LoginPage = () => {
 
   const handleSuccessfulLogin = (data) => {
     console.log(data);
+    localStorage.setItem('token', data.accessToken);
     navigate('/contacts');
   };
 
-  const loginHandler = (event, email, password) => {
+  const loginRequest = (event, email, password) => {
     event.preventDefault();
     sendRequest(
       {
@@ -28,6 +29,7 @@ const LoginPage = () => {
       },
       handleSuccessfulLogin
     );
+    // TODO: Handle error
     console.log(error);
   };
 
@@ -39,7 +41,7 @@ const LoginPage = () => {
           <Col></Col>
           <Col xs={12} sm={10} md={8} lg={6} xl={5} xxl={4}>
             <Card className='shadow py-4 px-5 mb-5 bg-body rounded'>
-              <LoginForm onSubmit={loginHandler} />
+              <LoginForm onSubmit={loginRequest} />
             </Card>
           </Col>
           <Col></Col>
