@@ -21,8 +21,13 @@ const LoginPage = () => {
 
   const loginRequest = (event, email, password) => {
     event.preventDefault();
+    // Clear storage
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    // Set new user to storage and app state
     localStorage.setItem('user', email);
     dispatch(userActions.setUser(email));
+    // Send login request
     sendRequest(
       {
         url: 'http://localhost:3001/login',
