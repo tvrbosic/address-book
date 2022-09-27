@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Container, Stack, Card } from 'react-bootstrap';
+import { Container, Stack, Row, Col, Card } from 'react-bootstrap';
 
 import styles from './LoginPage.module.css';
 import useHttpRequest from '../hooks/use-http-requst';
@@ -33,13 +33,17 @@ const LoginPage = () => {
 
   return (
     <Container fluid className={styles.container}>
-      <Stack
-        className={`${styles.layout} justify-content-center align-items-center`}>
-        <h1 className={`${styles.title} text-center`}>Address Book App</h1>
-        <Card
-          className={`${styles['login-form']} shadow py-4 px-5 mb-5 bg-body rounded`}>
-          <LoginForm onSubmit={loginHandler} />
-        </Card>
+      <Stack className='vh-100 justify-content-center align-items-center'>
+        <h1 className='text-center mb-5'>Address Book App</h1>
+        <Row className='w-100'>
+          <Col></Col>
+          <Col xs={12} sm={10} md={8} lg={6} xl={5} xxl={4}>
+            <Card className='shadow py-4 px-5 mb-5 bg-body rounded'>
+              <LoginForm onSubmit={loginHandler} />
+            </Card>
+          </Col>
+          <Col></Col>
+        </Row>
       </Stack>
     </Container>
   );

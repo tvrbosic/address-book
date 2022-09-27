@@ -3,14 +3,3 @@
 .container {
   background-color: var(--gray3);
 }
-.layout {
-  height: 100vh;
-}
-
-.title {
-  margin-bottom: 2rem;
-}
-
-.login-form {
-  width: 60%;
-}
