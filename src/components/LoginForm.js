@@ -26,7 +26,7 @@ const LoginForm = (props) => {
 
   return (
     <Form
-      className={`${props.className}`}
+      className={`${props.className} justify-content-end`}
       onSubmit={(event) => props.onSubmit(event, email, password)}>
       <Form.Group className='mb-3' controlId='formBasicEmail'>
         <Form.Label>Email address</Form.Label>
@@ -37,7 +37,6 @@ const LoginForm = (props) => {
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
         />
-        <Form.Text className='text-muted'>Could display error here.</Form.Text>
       </Form.Group>
 
       <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -49,11 +48,12 @@ const LoginForm = (props) => {
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
         />
-        <Form.Text className='text-muted'>Could display error here.</Form.Text>
       </Form.Group>
-      <Button variant='primary' type='submit'>
-        Submit
-      </Button>
+      <Form.Group className='mt-3 text-center'>
+        <Button variant='primary' type='submit'>
+          Submit
+        </Button>
+      </Form.Group>
     </Form>
   );
 };

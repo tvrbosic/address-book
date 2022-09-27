@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Stack, Row, Col, Card } from 'react-bootstrap';
+import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
 import styles from './LoginPage.module.css';
 import useHttpRequest from '../hooks/use-http-requst';
@@ -29,9 +30,12 @@ const LoginPage = () => {
       },
       handleSuccessfulLogin
     );
-    // TODO: Handle error
-    console.log(error);
   };
+
+  // TODO: Handle error
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
 
   return (
     <Container fluid className={styles.container}>
@@ -43,6 +47,12 @@ const LoginPage = () => {
             <Card className='shadow py-4 px-5 mb-5 bg-body rounded'>
               <LoginForm onSubmit={loginRequest} />
             </Card>
+            {error && (
+              <Alert variant='danger text-center'>
+                Incorrect email and password. Please check entered data and try
+                again!
+              </Alert>
+            )}
           </Col>
           <Col></Col>
         </Row>
