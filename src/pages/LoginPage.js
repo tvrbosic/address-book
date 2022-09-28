@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
 import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
 import styles from './LoginPage.module.css';
 import useHttpRequest from '../hooks/use-http-requst';
-import { login } from '../store/user-actions';
+import { loginUser } from '../store/user-actions';
 import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => {
@@ -14,7 +13,7 @@ const LoginPage = () => {
   let navigate = useNavigate();
 
   const loginSuccessHandler = (data) => {
-    dispatch(login(data.user.email, data.accessToken));
+    dispatch(loginUser(data.accessToken));
     navigate('/contacts');
   };
 

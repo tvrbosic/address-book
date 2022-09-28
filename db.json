@@ -4,6 +4,11 @@
       "email": "user@email.com",
       "password": "$2a$10$xw7J6XfQiVntORCF0T1S.exx3cy6YmDX7TuG.Fth.7kUw8oxfEl7K",
       "id": 1
+    },
+    {
+      "email": "user1@email.com",
+      "password": "$2a$10$51X1hJmaECOVkV9rRv4ZYOKN6k6Vrv0QSI91spg2GW74IVKfg0KwK",
+      "id": 2
     }
   ]
 }

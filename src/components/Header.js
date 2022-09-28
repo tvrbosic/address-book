@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight } from 'react-bootstrap-icons';
 
-import { logout } from '../store/user-actions';
+import { logoutUser } from '../store/user-actions';
 
 const Header = (props) => {
   const email = useSelector((state) => state.user.email);
@@ -12,7 +12,7 @@ const Header = (props) => {
   let navigate = useNavigate();
 
   const logoutHandler = () => {
-    dispatch(logout());
+    dispatch(logoutUser());
     navigate('/');
   };
 
