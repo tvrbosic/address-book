@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Table } from 'react-bootstrap';
+
+import { Table, Button } from 'react-bootstrap';
+import { HeartFill, StarFill, TrashFill } from 'react-bootstrap-icons';
 
 import PaginationControl from './PaginationControl';
 
@@ -16,7 +18,7 @@ const DataTable = (props) => {
 
   return (
     <>
-      <Table striped bordered hover className='text-center align-middle'>
+      <Table hover className='text-center align-middle border-top'>
         <thead className='align-middle'>
           <tr>
             {props.headers.map((text, index) => (
@@ -27,11 +29,22 @@ const DataTable = (props) => {
         <tbody>
           {currentPageData.map((item) => (
             <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.surname}</td>
+              <td className='text-primary'>{item.name}</td>
+              <td className='text-primary'>{item.surname}</td>
               <td>{item.birth}</td>
               <td>{item.type}</td>
-              <td>{item.contact}</td>
+              <td className='text-primary'>{item.contact}</td>
+              <td className='d-flex justify-content-around'>
+                <Button variant='outline-success'>
+                  <HeartFill />
+                </Button>
+                <Button variant='outline-warning'>
+                  <StarFill />
+                </Button>
+                <Button variant='outline-danger'>
+                  <TrashFill />
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>

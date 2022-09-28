@@ -35,6 +35,7 @@ const ContactsPage = () => {
             'Date of birth',
             'Contact type',
             'Contact',
+            'Controls',
           ]}
           data={contactData}
         />
