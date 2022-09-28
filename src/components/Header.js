@@ -1,12 +1,12 @@
-import { useNavigate, Link, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Stack, Navbar, Nav } from 'react-bootstrap';
 import { BoxArrowRight } from 'react-bootstrap-icons';
 
 import { logoutUser } from '../store/user-actions';
 
-const Header = (props) => {
+const Header = () => {
   const email = useSelector((state) => state.user.email);
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -17,34 +17,16 @@ const Header = (props) => {
   };
 
   return (
-    <Navbar
-      collapseOnSelect
-      expand='lg'
-      variant='dark'
-      bg='dark'
-      className={`${props.className}`}>
-      <Container>
-        <Navbar.Brand>AddressBook</Navbar.Brand>
-        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-        <Navbar.Collapse id='responsive-navbar-nav' as={Link}>
-          <Nav className='mx-auto'>
-            <Nav.Link as={NavLink} to='/contacts' end>
-              Contacts
-            </Nav.Link>
-          </Nav>
-          <Nav>
-            <NavDropdown title={`${email}`} id='basic-nav-dropdown'>
-              <NavDropdown.Item
-                onClick={logoutHandler}
-                className='d-flex justify-content-around align-items-center'>
-                Logout
-                <BoxArrowRight className='fs-4' />
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <Stack direction='horizontal' className='w-100 px-5 py-2 bg-dark'>
+      <span className='fs-5 text-white'>AddressBook</span>
+      <span className='ms-auto text-secondary'>Signed in as: </span>
+      <span className='ms-1 text-light'>{email}</span>
+      <Nav>
+        <Nav.Link href='#' onClick={logoutHandler}>
+          <BoxArrowRight className='text-light fs-4' />
+        </Nav.Link>
+      </Nav>
+    </Stack>
   );
 };
 
