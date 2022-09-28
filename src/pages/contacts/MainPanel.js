@@ -1,14 +1,18 @@
-import { Row, Col, Button } from 'react-bootstrap';
+import { Stack, Button } from 'react-bootstrap';
 
 const MainPanel = () => {
   return (
-    <Row className='d-flex align-items-center px-5 py-3'>
-      <Col className='fs-5 fw-bold'>My Contacts</Col>
-      <Col>Dropdown</Col>
-      <Col>
-        <Button variant='outline-success'>Add Contact</Button>
-      </Col>
-    </Row>
+    <Stack
+      direction='horizontal'
+      gap={3}
+      className='d-flex align-items-center px-5 py-3'>
+      <span className='fs-5 fw-bold text-center'>My Contacts</span>
+
+      <Button variant='outline-danger' className='ms-auto'>
+        Favourites
+      </Button>
+      <Button variant='outline-success'>Add Contact</Button>
+    </Stack>
   );
 };
 
