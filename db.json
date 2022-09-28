@@ -5,5 +5,43 @@
       "password": "$2a$10$7IAf4/A42XVJk8Hw53.ysuLOq87JbXhTH3pwJX0tdqKkoMZYw/RE6",
       "id": 1
     }
+  ],
+  "contacts": [
+    {
+      "name": "Leanne",
+      "surname": "Howell",
+      "birth": 648505060000,
+      "type": "mobile",
+      "contact": "+385981234567",
+      "user": 1,
+      "id": 1
+    },
+    {
+      "name": "Ervin",
+      "surname": "Graham",
+      "birth": 576274660000,
+      "type": "landline",
+      "contact": "+38511234567",
+      "user": 1,
+      "id": 2
+    },
+    {
+      "name": "Clementine",
+      "surname": "Dietrich",
+      "birth": 843423460000,
+      "type": "email",
+      "contact": "clementine.dietrich@mail.com",
+      "user": 1,
+      "id": 3
+    },
+    {
+      "name": "Chelsey",
+      "surname": "Runolfsdottir",
+      "birth": 453413860000,
+      "type": "pager",
+      "contact": "clementine.dietrich@mail.com",
+      "user": 1,
+      "id": 4
+    }
   ]
 }

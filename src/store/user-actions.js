@@ -3,7 +3,6 @@ import jwt from 'jwt-decode';
 import { userActions } from './user-slice';
 
 let logoutTimer;
-console.log('Timer created!');
 
 const calculateRemainingTime = (expires) => {
   // JWT time is in seconds, convert to miliseconds (*1000)
@@ -11,7 +10,6 @@ const calculateRemainingTime = (expires) => {
   const currentTime = new Date().getTime();
   // Calculate remaining time in seconds (divide by 1000)
   const remainingTime = (expirationTime - currentTime) / 1000;
-  console.log(`Session expires in ${Math.ceil(remainingTime / 60)} min!`);
   return remainingTime;
 };
 

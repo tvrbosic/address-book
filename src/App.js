@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { initStorageSession } from './store/user-actions';
 import LoginPage from './pages/LoginPage';
-import ContactsPage from './pages/ContactsPage';
+import ContactsPage from './pages/contacts/ContactsPage';
 
 function App() {
   const dispatch = useDispatch();
