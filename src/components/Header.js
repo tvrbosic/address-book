@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Stack, Navbar, Nav } from 'react-bootstrap';
+import { Stack, Nav } from 'react-bootstrap';
 import { BoxArrowRight } from 'react-bootstrap-icons';
 
 import { logoutUser } from '../store/user-actions';
