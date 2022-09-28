@@ -15,19 +15,13 @@ function App() {
 
   return (
     <>
-      {!userLoggedIn && (
-        <Routes>
-          <Route exact path='/' element={<LoginPage />} />
-          <Route exact path='*' element={<Navigate to={'/'} replace />} />
-        </Routes>
-      )}
-      {userLoggedIn && (
-        <Routes>
-          <Route exact path='/' element={<LoginPage />} />
+      <Routes>
+        <Route exact path='/' element={<LoginPage />} />
+        {userLoggedIn && (
           <Route exact path='/contacts' element={<ContactsPage />} />
-          <Route exact path='*' element={<Navigate to={'/'} replace />} />
-        </Routes>
-      )}
+        )}
+        <Route exact path='*' element={<Navigate to={'/'} replace />} />
+      </Routes>
     </>
   );
 }
