@@ -17,8 +17,7 @@ const LoginPage = () => {
     navigate('/contacts');
   };
 
-  const loginRequest = (event, email, password) => {
-    event.preventDefault();
+  const loginRequest = (email, password) => {
     // Clear storage
     localStorage.removeItem('user');
     localStorage.removeItem('token');

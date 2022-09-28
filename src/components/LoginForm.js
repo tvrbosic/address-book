@@ -2,32 +2,49 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import useInput from '../hooks/use-input';
-
-const isNotEmpty = (value) => value.trim().length >= 3;
+import { emailValidator, passwordValidator } from '../utility/validators';
 
 const LoginForm = (props) => {
   const {
     value: email,
-    isTouched: emailTouched,
     hasError: emailHasError,
+    isTouched: emailTouched,
     onChange: emailChangeHandler,
     onBlur: emailBlurHandler,
     validate: validateEmail,
-  } = useInput(isNotEmpty);
+  } = useInput(emailValidator);
 
   const {
     value: password,
-    isTouched: passwordTouched,
     hasError: passwordHasError,
+    isTouched: passwordTouched,
     onChange: passwordChangeHandler,
     onBlur: passwordBlurHandler,
     validate: validatePassword,
-  } = useInput(isNotEmpty);
+  } = useInput(passwordValidator);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // Inputs were not touched (they are empty)
+    if (!emailTouched || !passwordTouched) {
+      // Trigger validation manually to show errors and return
+      validateEmail();
+      validatePassword();
+      return;
+    }
+    // Inputs have errors
+    if (emailHasError || passwordHasError) {
+      return;
+    }
+    // All ok, send request
+    props.onSubmit(email, password);
+  };
 
   return (
     <Form
+      noValidate
       className={`${props.className} justify-content-end`}
-      onSubmit={(event) => props.onSubmit(event, email, password)}>
+      onSubmit={(event) => submitHandler(event)}>
       <Form.Group className='mb-3' controlId='formBasicEmail'>
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -36,7 +53,11 @@ const LoginForm = (props) => {
           value={email}
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
+          className={`${emailHasError && 'is-invalid'}`}
         />
+        <Form.Text className='invalid-feedback'>
+          Please enter valid email address!
+        </Form.Text>
       </Form.Group>
 
       <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -47,7 +68,12 @@ const LoginForm = (props) => {
           value={password}
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
+          className={`${passwordHasError && 'is-invalid'}`}
         />
+        <Form.Text className='invalid-feedback'>
+          Password requires at least 8 characters, uppercase letter, number and
+          special character!
+        </Form.Text>
       </Form.Group>
       <Form.Group className='mt-3 text-center'>
         <Button variant='primary' type='submit'>
