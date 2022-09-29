@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
-import styles from './LoginPage.module.css';
 import useHttpRequest from '../hooks/use-http-requst';
 import { loginUser } from '../store/user-actions';
 import LoginForm from '../components/LoginForm';
@@ -36,7 +35,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Container fluid className={styles.container}>
+    <Container fluid className='bg-light'>
       <Stack className='vh-100 justify-content-center align-items-center'>
         <h1 className='text-center mb-5'>Address Book App</h1>
         <Row className='w-100'>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { Table, Button } from 'react-bootstrap';
-import { HeartFill, StarFill, TrashFill } from 'react-bootstrap-icons';
-
+import { TrashFill } from 'react-bootstrap-icons';
+import ToggleIconButton from './ToggleButton';
 import PaginationControl from './PaginationControl';
 
 const itemsPerPage = 20;
@@ -27,21 +27,21 @@ const DataTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((item) => (
-            <tr key={item.id}>
-              <td className='text-primary'>{item.name}</td>
-              <td className='text-primary'>{item.surname}</td>
-              <td>{item.birth}</td>
-              <td>{item.type}</td>
-              <td className='text-primary'>{item.contact}</td>
-              <td className='d-flex justify-content-around'>
-                <Button variant='outline-success'>
-                  <HeartFill />
-                </Button>
-                <Button variant='outline-warning'>
-                  <StarFill />
-                </Button>
-                <Button variant='outline-danger'>
+          {currentPageData.map((user) => (
+            <tr key={user.id}>
+              <td className='text-primary'>{user.name}</td>
+              <td className='text-primary'>{user.surname}</td>
+              <td>{user.birth}</td>
+              <td>{user.type}</td>
+              <td className='text-primary'>{user.contact}</td>
+              <td className='d-flex justify-content-around align-items-center'>
+                <ToggleIconButton icon='heart' active={user.favourite} />
+                <ToggleIconButton
+                  icon='star'
+                  active={user.star}
+                  className='ms-1'
+                />
+                <Button variant='outline-primary' className='ms-1'>
                   <TrashFill />
                 </Button>
               </td>

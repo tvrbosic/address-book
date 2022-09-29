@@ -13,6 +13,8 @@
       "birth": 648505060000,
       "type": "mobile",
       "contact": "+385981234567",
+      "favourite": true,
+      "star": false,
       "user": 1,
       "id": 1
     },
@@ -22,6 +24,8 @@
       "birth": 576274660000,
       "type": "landline",
       "contact": "+38511234567",
+      "favourite": false,
+      "star": false,
       "user": 1,
       "id": 2
     },
@@ -31,6 +35,8 @@
       "birth": 843423460000,
       "type": "email",
       "contact": "clementine.dietrich@mail.com",
+      "favourite": true,
+      "star": true,
       "user": 1,
       "id": 3
     },
@@ -40,6 +46,8 @@
       "birth": 453413860000,
       "type": "pager",
       "contact": "987456123",
+      "favourite": false,
+      "star": true,
       "user": 1,
       "id": 4
     }
