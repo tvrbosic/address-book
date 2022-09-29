@@ -8,9 +8,10 @@ const MainPanel = () => {
       className='d-flex align-items-center px-5 py-3'>
       <span className='fs-5 fw-bold text-center'>My Contacts</span>
 
-      <Button variant='outline-danger' className='ms-auto'>
-        Favourites
+      <Button variant='outline-warning' className='ms-auto'>
+        Starred
       </Button>
+      <Button variant='outline-danger'>Favourites</Button>
       <Button variant='outline-success'>Add Contact</Button>
     </Stack>
   );
