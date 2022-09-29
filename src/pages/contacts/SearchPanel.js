@@ -1,21 +1,13 @@
 import { useState } from 'react';
 
-import {
-  Stack,
-  Col,
-  Form,
-  InputGroup,
-  Navbar,
-  NavDropdown,
-} from 'react-bootstrap';
+import { Stack, Form, InputGroup, Navbar, NavDropdown } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 
 import DatePicker from 'react-date-picker';
 //import DatePicker from 'react-date-picker/dist/entry.nostyle';
 
 // Customize DatePicker css
-import './DatePicker.scss';
-//import './DatePicker.scss';
+import '../../sass/DatePicker.scss';
 
 const SearchPanel = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
