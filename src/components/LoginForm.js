@@ -26,7 +26,7 @@ const LoginForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     // Inputs were not touched (they are empty)
-    if (!emailTouched || !passwordTouched) {
+    if (!emailTouched && !passwordTouched) {
       // Trigger validation manually to show errors and return
       validateEmail();
       validatePassword();
@@ -44,7 +44,7 @@ const LoginForm = (props) => {
     <Form
       noValidate
       className={`${props.className} justify-content-end`}
-      onSubmit={(event) => submitHandler(event)}>
+      onSubmit={submitHandler}>
       <Form.Group className='mb-3' controlId='formBasicEmail'>
         <Form.Label>Email address</Form.Label>
         <Form.Control
