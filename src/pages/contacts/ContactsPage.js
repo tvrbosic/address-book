@@ -26,6 +26,10 @@ const ContactsPage = () => {
     sendRequest({ url: 'http://localhost:3001/contacts' }, fetchedDataHandler);
   }, [sendRequest, fetchedDataHandler]);
 
+  const sortContacts = (sortAttribute) => {
+    dispatch(contactsActions.sortContacts(sortAttribute));
+  };
+
   const dataLoaded = contactData.length > 0 ? true : false;
 
   return (
@@ -33,19 +37,7 @@ const ContactsPage = () => {
       <Header />
       <MainPanel />
       <SearchPanel />
-      {dataLoaded && (
-        <DataTable
-          headers={[
-            'Name',
-            'Surname',
-            'Date of birth',
-            'Contact type',
-            'Contact',
-            'Controls',
-          ]}
-          data={contactData}
-        />
-      )}
+      {dataLoaded && <DataTable data={contactData} sort={sortContacts} />}
       {!dataLoaded && <LoadingOverlay />}
     </Container>
   );

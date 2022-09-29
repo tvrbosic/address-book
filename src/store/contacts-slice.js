@@ -2,6 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   list: [],
+  sortAscending: {
+    name: true,
+    surname: true,
+    birth: true,
+    type: true,
+    contact: true,
+  },
 };
 
 const contactsSlice = createSlice({
@@ -46,6 +53,25 @@ const contactsSlice = createSlice({
       if (existingContact) {
         state.list = state.list.filter((contact) => contact.id !== id);
       }
+    },
+    sortContacts(state, action) {
+      const sortAttribute = action.payload;
+
+      // Check sortAscending status for given attribute (action.payload)
+      if (state.sortAscending[action.payload]) {
+        // Sort ascending
+        state.list = state.list.sort((a, b) =>
+          ('' + a[sortAttribute]).localeCompare(b[sortAttribute])
+        );
+      } else {
+        // Sort descending
+        state.list = state.list.sort((a, b) =>
+          ('' + b[sortAttribute]).localeCompare(a[sortAttribute])
+        );
+      }
+      // Toggle sortAscending state for given attribute (action.payload)
+      state.sortAscending[action.payload] =
+        !state.sortAscending[action.payload];
     },
   },
 });
