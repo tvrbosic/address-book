@@ -20,8 +20,8 @@ const contactsSlice = createSlice({
         // Contact does not exist
         state.list.push({
           id: newContact.id,
-          name: newContact.title,
-          surname: newContact.price,
+          name: newContact.name,
+          surname: newContact.surname,
           birth: newContact.birth,
           type: newContact.type,
           contact: newContact.contact,
@@ -31,8 +31,8 @@ const contactsSlice = createSlice({
       } else {
         // Contact exists
         existingContact.id = newContact.id;
-        existingContact.name = newContact.title;
-        existingContact.surname = newContact.price;
+        existingContact.name = newContact.name;
+        existingContact.surname = newContact.surname;
         existingContact.birth = newContact.birth;
         existingContact.type = newContact.type;
         existingContact.contact = newContact.contact;

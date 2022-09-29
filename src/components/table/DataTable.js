@@ -26,8 +26,8 @@ const DataTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((user) => (
-            <TableRow key={user.id} user={user} />
+          {currentPageData.map((contact) => (
+            <TableRow key={contact.id} contact={contact} />
           ))}
         </tbody>
       </Table>

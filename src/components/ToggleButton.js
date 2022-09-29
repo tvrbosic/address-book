@@ -14,12 +14,12 @@ const ToggleIconButton = (props) => {
 
   switch (props.icon) {
     case 'star':
-      iconOff = <Heart className='text-danger fs-4' />;
-      iconOn = <HeartFill className='text-danger fs-4' />;
-      break;
-    case 'heart':
       iconOff = <Star className='text-warning fs-4' />;
       iconOn = <StarFill className='text-warning fs-4' />;
+      break;
+    case 'heart':
+      iconOff = <Heart className='text-danger fs-4' />;
+      iconOn = <HeartFill className='text-danger fs-4' />;
       break;
     default:
       iconOff = <ToggleOff className='text-primary fs-4' />;

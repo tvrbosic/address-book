@@ -24,7 +24,6 @@ const ContactsPage = () => {
 
   useEffect(() => {
     sendRequest({ url: 'http://localhost:3001/contacts' }, fetchedDataHandler);
-    console.log('test');
   }, [sendRequest, fetchedDataHandler]);
 
   const dataLoaded = contactData.length > 0 ? true : false;
