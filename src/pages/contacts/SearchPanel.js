@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import {
-  Row,
+  Stack,
   Col,
   Form,
   InputGroup,
@@ -10,46 +10,50 @@ import {
 } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-date-picker';
+//import DatePicker from 'react-date-picker/dist/entry.nostyle';
+
+// Customize DatePicker css
+import './DatePicker.scss';
+//import './DatePicker.scss';
 
 const SearchPanel = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
-    <Row className='d-flex align-items-center px-5 py-3 border-top bg-light'>
-      <Col xs={7}>
-        <InputGroup>
-          <InputGroup.Text id='search-input'>
-            <Search className='fs-5' />
-          </InputGroup.Text>
-          <Form.Control
-            placeholder='Search...'
-            aria-label='Search'
-            aria-describedby='search-input'
-          />
-        </InputGroup>
-      </Col>
+    <Stack
+      direction='horizontal'
+      gap={4}
+      className='px-5 py-3 border-top bg-light align-items-stretch justify-content-start'>
+      <InputGroup className='w-50'>
+        <InputGroup.Text id='search-input'>
+          <Search className='fs-5' />
+        </InputGroup.Text>
+        <Form.Control
+          placeholder='Search...'
+          aria-label='Search'
+          aria-describedby='search-input'
+        />
+      </InputGroup>
 
-      <Col xs={3}>
-        <InputGroup className='d-flex justify-content-center'>
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-          />
-        </InputGroup>
-      </Col>
+      <div className='d-flex'>
+        <DatePicker value={selectedDate} onChange={setSelectedDate} />
+      </div>
 
-      <Col xs={2} className='d-flex justify-content-center align-items-center'>
-        <Navbar.Text className='me-2'>Type:</Navbar.Text>
-        <NavDropdown id='type-dropdown' title='All' menuVariant='light'>
+      <div className='d-flex align-items-center '>
+        <Navbar.Text>Type:</Navbar.Text>
+        <NavDropdown
+          id='type-dropdown'
+          title='All'
+          menuVariant='light'
+          className='ms-2'>
           <NavDropdown.Item>Mobile</NavDropdown.Item>
           <NavDropdown.Item>Landline</NavDropdown.Item>
           <NavDropdown.Item>Email</NavDropdown.Item>
           <NavDropdown.Item>Pager</NavDropdown.Item>
         </NavDropdown>
-      </Col>
-    </Row>
+      </div>
+    </Stack>
   );
 };
 
