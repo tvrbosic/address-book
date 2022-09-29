@@ -1,23 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import DataTable from '../../components/DataTable';
 
-import useHttpRequest from '../../hooks/use-http-requst';
+import useHttp from '../../hooks/use-http';
+import { contactsActions } from '../../store/contacts-slice';
 import Header from '../../components/Header';
 import MainPanel from './MainPanel';
 import SearchPanel from './SearchPanel';
 import LoadingOverlay from '../../components/LoadingOverlay';
 
 const ContactsPage = () => {
-  const [contactData, setContactData] = useState([]);
-  const { sendRequest } = useHttpRequest();
+  const contactData = useSelector((state) => state.contacts.list);
+  const { sendRequest } = useHttp();
+  const dispatch = useDispatch();
 
-  const dataHandler = (data) => {
-    setContactData(data);
+  const fetchedDataHandler = (data) => {
+    dispatch(contactsActions.setContacts(data));
   };
 
   useEffect(() => {
-    sendRequest({ url: 'http://localhost:3001/contacts' }, dataHandler);
+    sendRequest({ url: 'http://localhost:3001/contacts' }, fetchedDataHandler);
   }, [sendRequest]);
 
   const dataLoaded = contactData.length > 0 ? true : false;

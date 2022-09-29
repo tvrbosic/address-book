@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
-import useHttpRequest from '../hooks/use-http-requst';
+import useHttpRequest from '../hooks/use-http';
 import { loginUser } from '../store/user-actions';
 import LoginForm from '../components/LoginForm';
 
