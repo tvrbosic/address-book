@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container, Stack, Row, Col, Card, Alert } from 'react-bootstrap';
 
-import useHttpRequest from '../hooks/use-http';
-import { loginUser } from '../store/user-actions';
-import LoginForm from '../components/LoginForm';
+import useHttp from '../../hooks/use-http';
+import { loginUser } from '../../store/user-actions';
+import LoginForm from './LoginForm';
 
 const LoginPage = () => {
-  const { error, sendRequest } = useHttpRequest();
+  const { error, sendRequest } = useHttp();
   const dispatch = useDispatch();
   let navigate = useNavigate();
 

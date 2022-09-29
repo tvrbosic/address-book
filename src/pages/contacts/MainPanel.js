@@ -1,6 +1,6 @@
 import { Stack, Button } from 'react-bootstrap';
 
-const MainPanel = () => {
+const MainPanel = ({ addContactClick }) => {
   return (
     <Stack
       direction='horizontal'
@@ -12,7 +12,9 @@ const MainPanel = () => {
         Starred
       </Button>
       <Button variant='outline-danger'>Favourites</Button>
-      <Button variant='outline-success'>Add Contact</Button>
+      <Button variant='outline-success' onClick={addContactClick}>
+        Add Contact
+      </Button>
     </Stack>
   );
 };
