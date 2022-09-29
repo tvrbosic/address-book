@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { Table, Button } from 'react-bootstrap';
 import { TrashFill } from 'react-bootstrap-icons';
-import ToggleIconButton from './ToggleButton';
-import PaginationControl from './PaginationControl';
+import ToggleIconButton from '../ToggleButton';
+import PaginationControl from '../PaginationControl';
 
 const itemsPerPage = 20;
 

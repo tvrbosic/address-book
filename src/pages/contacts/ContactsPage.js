@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import DataTable from '../../components/DataTable';
+import DataTable from '../../components/table/DataTable';
 
 import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
@@ -15,13 +15,17 @@ const ContactsPage = () => {
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
 
-  const fetchedDataHandler = (data) => {
-    dispatch(contactsActions.setContacts(data));
-  };
+  const fetchedDataHandler = useCallback(
+    (data) => {
+      dispatch(contactsActions.setContacts(data));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     sendRequest({ url: 'http://localhost:3001/contacts' }, fetchedDataHandler);
-  }, [sendRequest]);
+    console.log('test');
+  }, [sendRequest, fetchedDataHandler]);
 
   const dataLoaded = contactData.length > 0 ? true : false;
 
