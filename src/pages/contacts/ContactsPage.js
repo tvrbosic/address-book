@@ -11,6 +11,7 @@ import SearchPanel from './SearchPanel';
 import LoadingOverlay from '../../components/LoadingOverlay';
 
 const ContactsPage = () => {
+  const userId = useSelector((state) => state.user.id);
   const contactData = useSelector((state) => state.contacts.list);
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
@@ -23,8 +24,11 @@ const ContactsPage = () => {
   );
 
   useEffect(() => {
-    sendRequest({ url: 'http://localhost:3001/contacts' }, fetchedDataHandler);
-  }, [sendRequest, fetchedDataHandler]);
+    sendRequest(
+      { url: `http://localhost:3001/contacts?user=${userId}` },
+      fetchedDataHandler
+    );
+  }, [sendRequest, fetchedDataHandler, userId]);
 
   const sortContacts = (sortAttribute) => {
     dispatch(contactsActions.sortContacts(sortAttribute));
