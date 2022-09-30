@@ -24,6 +24,7 @@
   flex-grow: 1;
   height: 100%;
   flex-shrink: 0;
+  padding: $spacer*0.3 $spacer*0.5;
   border: thin solid $gray-400;
   background-color: $white;
   border-radius: 0.5rem !important;

@@ -141,7 +141,6 @@ const AddContactForm = (props) => {
           </Col>
           <Col xs={9}>
             <Form.Select
-              aria-label='Contact type select'
               onChange={(event) => setContactType(event.target.value)}>
               <option value='mobile'>Mobile</option>
               <option value='landline'>Landline</option>
