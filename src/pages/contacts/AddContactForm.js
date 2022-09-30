@@ -1,19 +1,25 @@
-import {
-  Form,
-  Stack,
-  Row,
-  Col,
-  DropdownButton,
-  Dropdown,
-  Button,
-} from 'react-bootstrap';
+import { Form, Stack, Row, Col, Button } from 'react-bootstrap';
 import DatePicker from 'react-date-picker';
 
 import useInput from '../../hooks/use-input';
-import { emailValidator } from '../../utility/validators';
+import useDatepicker from '../../hooks/use-datepciker';
+import {
+  maxLength20Validator,
+  maxLength30Validator,
+  notEmptyValidator,
+} from '../../utility/validators';
 
 // Customize DatePicker css
 import '../../sass/DatePicker.scss';
+import { useState } from 'react';
+
+const nameValidator = (value) => {
+  return notEmptyValidator(value) && maxLength20Validator(value);
+};
+
+const surnameValidator = (value) => {
+  return notEmptyValidator(value) && maxLength30Validator(value);
+};
 
 const AddContactForm = (props) => {
   const {
@@ -23,7 +29,7 @@ const AddContactForm = (props) => {
     onChange: nameChangeHandler,
     onBlur: nameBlurHandler,
     validate: validateName,
-  } = useInput(emailValidator);
+  } = useInput(nameValidator);
 
   const {
     value: surname,
@@ -32,7 +38,18 @@ const AddContactForm = (props) => {
     onChange: surnameChangeHandler,
     onBlur: surnameBlurHandler,
     validate: validateSurname,
-  } = useInput(emailValidator);
+  } = useInput(surnameValidator);
+
+  const {
+    value: birth,
+    hasError: birthHasError,
+    isTouched: birthTouched,
+    onChange: birthChangeHandler,
+    onBlur: birthBlurHandler,
+    validate: validateBirth,
+  } = useDatepicker(new Date(), notEmptyValidator);
+
+  const [contactType, setContactType] = useState('mobile');
 
   const {
     value: contact,
@@ -41,9 +58,32 @@ const AddContactForm = (props) => {
     onChange: contactChangeHandler,
     onBlur: contactBlurHandler,
     validate: validateContact,
-  } = useInput(emailValidator);
+  } = useInput(notEmptyValidator);
 
-  const submitHandler = () => {};
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // Inputs were not touched (they are empty)
+    if (!nameTouched && !surnameTouched && !contactTouched && !birthTouched) {
+      // Trigger validation manually to show errors and return
+      validateName();
+      validateSurname();
+      validateContact();
+      validateBirth();
+      return;
+    }
+    // Inputs have errors
+    if (nameHasError || surnameHasError || contactHasError || birthHasError) {
+      return;
+    }
+    // All ok, send request
+    props.onSubmit({
+      name,
+      surname,
+      birth: birth.getTime(),
+      type: contactType,
+      contact,
+    });
+  };
 
   return (
     <Form
@@ -84,7 +124,13 @@ const AddContactForm = (props) => {
             <Form.Label column>Date of birth</Form.Label>
           </Col>
           <Col xs={9}>
-            <DatePicker />
+            <DatePicker
+              value={birth}
+              onChange={birthChangeHandler}
+              onBlur={birthBlurHandler}
+              clearIcon={null}
+              required={true}
+            />
           </Col>
         </Row>
 
@@ -93,12 +139,14 @@ const AddContactForm = (props) => {
             <Form.Label column>Type</Form.Label>
           </Col>
           <Col xs={9}>
-            <DropdownButton id='dropdown-basic-button' title='Mobile'>
-              <Dropdown.Item>Mobile</Dropdown.Item>
-              <Dropdown.Item>Landline</Dropdown.Item>
-              <Dropdown.Item>Email</Dropdown.Item>
-              <Dropdown.Item>Pager</Dropdown.Item>
-            </DropdownButton>
+            <Form.Select
+              aria-label='Contact type select'
+              onChange={(event) => setContactType(event.target.value)}>
+              <option value='mobile'>Mobile</option>
+              <option value='landline'>Landline</option>
+              <option value='email'>Email</option>
+              <option value='pager'>Pager</option>
+            </Form.Select>
           </Col>
         </Row>
 

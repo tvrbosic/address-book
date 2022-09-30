@@ -11,3 +11,15 @@ export const passwordValidator = (value) => {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
   );
 };
+
+export const maxLength30Validator = (value) => {
+  return value.length <= 30 ? true : false;
+};
+
+export const maxLength20Validator = (value) => {
+  return value.length <= 20 ? true : false;
+};
+
+export const notEmptyValidator = (value) => {
+  return value ? true : false;
+};

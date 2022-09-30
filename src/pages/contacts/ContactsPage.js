@@ -52,7 +52,7 @@ const ContactsPage = () => {
       {!dataLoaded && <LoadingOverlay />}
       {displayAddModal && (
         <Modal onClose={hideAddModalHandler}>
-          <AddContact />
+          <AddContact userId={userId} />
         </Modal>
       )}
     </Container>
