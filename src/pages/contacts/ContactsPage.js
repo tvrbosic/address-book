@@ -7,13 +7,15 @@ import { contactsActions } from '../../store/contacts-slice';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import Header from '../../components/Header';
 import Modal from '../../components/Modal';
-import AddContact from './AddContact';
+import AddContact from './modals/AddContact';
+import DeleteContact from './modals/DeleteContact';
 import MainPanel from './MainPanel';
 import SearchPanel from './SearchPanel';
 import DataTable from '../../components/table/DataTable';
 
 const ContactsPage = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
+  const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
   const userId = useSelector((state) => state.user.id);
   const contactData = useSelector((state) => state.contacts.list);
   const { sendRequest } = useHttp();
@@ -37,8 +39,9 @@ const ContactsPage = () => {
     dispatch(contactsActions.sortContacts(sortAttribute));
   };
 
-  const hideAddModalHandler = () => {
+  const hideModalHandler = () => {
     setDisplayAddModal(false);
+    setDisplayDeleteModal(false);
   };
 
   const dataLoaded = contactData.length > 0 ? true : false;
@@ -48,11 +51,22 @@ const ContactsPage = () => {
       <Header />
       <MainPanel addContactClick={() => setDisplayAddModal(true)} />
       <SearchPanel />
-      {dataLoaded && <DataTable data={contactData} sort={sortContacts} />}
+      {dataLoaded && (
+        <DataTable
+          data={contactData}
+          sort={sortContacts}
+          deleteConfirmation={() => setDisplayDeleteModal(true)}
+        />
+      )}
       {!dataLoaded && <LoadingOverlay />}
       {displayAddModal && (
-        <Modal onClose={hideAddModalHandler}>
-          <AddContact userId={userId} closeModal={hideAddModalHandler} />
+        <Modal onClose={hideModalHandler}>
+          <AddContact userId={userId} closeModal={hideModalHandler} />
+        </Modal>
+      )}
+      {displayDeleteModal && (
+        <Modal onClose={hideModalHandler}>
+          <DeleteContact closeModal={hideModalHandler} />
         </Modal>
       )}
     </Container>

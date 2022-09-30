@@ -9,6 +9,7 @@ const initialState = {
     type: true,
     contact: true,
   },
+  contactToDelete: null,
 };
 
 const contactsSlice = createSlice({
@@ -45,6 +46,13 @@ const contactsSlice = createSlice({
         existingContact.contact = newContact.contact;
         existingContact.favourite = newContact.favourite;
         existingContact.star = newContact.star;
+      }
+    },
+    setContactToDelete(state, action) {
+      const id = action.payload;
+      const existingContact = state.list.find((contact) => contact.id === id);
+      if (existingContact) {
+        state.contactToDelete = existingContact;
       }
     },
     deleteContact(state, action) {

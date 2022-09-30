@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const useHttpRequest = () => {
+const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -37,4 +37,4 @@ const useHttpRequest = () => {
   };
 };
 
-export default useHttpRequest;
+export default useHttp;

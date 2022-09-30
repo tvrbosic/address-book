@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { Stack } from 'react-bootstrap';
 
-import styles from './AddContact.module.scss';
-import useHttp from '../../hooks/use-http';
-import { contactsActions } from '../../store/contacts-slice';
+import styles from './ContactModals.module.scss';
+import useHttp from '../../../hooks/use-http';
+import { contactsActions } from '../../../store/contacts-slice';
 import AddContactForm from './AddContactForm';
 
 const AddContact = ({ userId, closeModal }) => {

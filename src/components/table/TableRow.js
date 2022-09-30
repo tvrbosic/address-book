@@ -7,7 +7,7 @@ import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
 import ToggleIconButton from '../ToggleButton';
 
-const TableRow = ({ contact }) => {
+const TableRow = ({ contact, deleteConfirmation }) => {
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
 
@@ -46,6 +46,11 @@ const TableRow = ({ contact }) => {
     );
   };
 
+  const trashClickHandler = () => {
+    dispatch(contactsActions.setContactToDelete(contact.id));
+    deleteConfirmation();
+  };
+
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('hr-HR');
   };
@@ -69,7 +74,10 @@ const TableRow = ({ contact }) => {
           className='ms-1'
           onClick={starClickHandler}
         />
-        <Button variant='outline-primary' className='ms-1'>
+        <Button
+          variant='outline-primary'
+          className='ms-1'
+          onClick={trashClickHandler}>
           <TrashFill />
         </Button>
       </td>

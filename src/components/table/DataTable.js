@@ -38,7 +38,11 @@ const DataTable = (props) => {
 
         <tbody>
           {currentPageData.map((contact) => (
-            <TableRow key={contact.id} contact={contact} />
+            <TableRow
+              key={contact.id}
+              contact={contact}
+              deleteConfirmation={props.deleteConfirmation}
+            />
           ))}
         </tbody>
       </Table>

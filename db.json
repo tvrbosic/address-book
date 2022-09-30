@@ -50,39 +50,6 @@
       "star": true,
       "user": 1,
       "id": 4
-    },
-    {
-      "name": "asd",
-      "surname": "asd",
-      "birth": 1664528877515,
-      "type": "mobile",
-      "contact": "asd",
-      "star": false,
-      "favourite": true,
-      "user": 1,
-      "id": 5
-    },
-    {
-      "name": "asdqwrqwr",
-      "surname": "qrwqwr",
-      "birth": 1664529166918,
-      "type": "mobile",
-      "contact": "qwrqwrqw",
-      "star": true,
-      "favourite": false,
-      "user": 1,
-      "id": 6
-    },
-    {
-      "name": "asd",
-      "surname": "asd",
-      "birth": 1664530203837,
-      "type": "mobile",
-      "contact": "asd",
-      "star": false,
-      "favourite": false,
-      "user": 1,
-      "id": 7
     }
   ]
 }
