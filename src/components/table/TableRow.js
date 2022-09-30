@@ -57,7 +57,6 @@ const TableRow = ({ contact, deleteConfirmation }) => {
     return new Date(date).toLocaleDateString('hr-HR');
   };
 
-  console.log(contact.type);
   return (
     <tr>
       <td className='text-primary'>{contact.name}</td>
