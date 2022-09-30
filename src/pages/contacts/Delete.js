@@ -1,9 +1,9 @@
 import { Stack, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
-import styles from './ContactModals.module.scss';
-import useHttp from '../../../hooks/use-http';
-import { contactsActions } from '../../../store/contacts-slice';
+import styles from '../../sass/main.module.scss';
+import useHttp from '../../hooks/use-http';
+import { contactsActions } from '../../store/contacts-slice';
 import { useState } from 'react';
 
 const DeleteContact = ({ closeModal }) => {
@@ -82,7 +82,7 @@ const DeleteContact = ({ closeModal }) => {
   return (
     <Stack>
       <div
-        className={`${styles.header} p-3 text-center fs-4 fw-bold text-white border-bottom rounded-top`}>
+        className={`${styles.modal__header} p-3 text-center fs-4 fw-bold text-white border-bottom rounded-top`}>
         Delete Contact
       </div>
       <div className='p-5 text-center'>

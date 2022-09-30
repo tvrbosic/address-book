@@ -6,15 +6,15 @@ import { Search } from 'react-bootstrap-icons';
 import DatePicker from 'react-date-picker';
 //import DatePicker from 'react-date-picker/dist/entry.nostyle';
 
+import styles from '../../sass/main.module.scss';
 // Customize DatePicker css
-import '../../sass/DatePicker.scss';
-import styles from '../../sass/SearchPanel.module.scss';
+import '../../sass/customized/_react-date-picker.scss';
 
 const SearchPanel = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
-    <Container fluid className={`${styles.background} px-4 py-3`}>
+    <Container fluid className={`${styles['bg-gray-200']} px-4 py-3`}>
       <Row>
         <Col xs={12} md={4} xl={6} className='mb-3 mb-md-0'>
           <InputGroup>

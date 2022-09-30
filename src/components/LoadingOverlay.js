@@ -1,17 +1,21 @@
 import ReactDOM from 'react-dom';
 import { Container, Spinner } from 'react-bootstrap';
 
-import styles from './LoadingOverlay.module.css';
+import styles from '../sass/main.module.scss';
 
 const Backdrop = (props) => {
-  return <div className={styles.Backdrop} onClick={props.onClose}></div>;
+  return (
+    <div
+      className={styles.loadingOverlay__backdrop}
+      onClick={props.onClose}></div>
+  );
 };
 
 const LoadingSpinner = (props) => {
   return (
     <Container
       fluid
-      className={`${styles.LoadingSpinner} d-flex flex-column align-items-center justify-content-center vh-100 fixed-top`}>
+      className={`${styles.loadingOverlay__spinner} d-flex flex-column align-items-center justify-content-center vh-100 fixed-top`}>
       {props.children}
     </Container>
   );

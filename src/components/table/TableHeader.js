@@ -1,9 +1,9 @@
-import styles from './TableHeader.module.css';
-import SortedIcon from './SortedIcon';
+import styles from '../../sass/main.module.scss';
+import SortedIcon from '../SortedIcon';
 
 const TableHeader = ({ sortBy, attributeSortDirections, sortHandler }) => {
   return (
-    <thead className={`${styles.container} align-middle`}>
+    <thead className={`${styles['hover-pointer']} align-middle`}>
       <tr>
         <th onClick={() => sortHandler('name')}>
           <span>Name</span>

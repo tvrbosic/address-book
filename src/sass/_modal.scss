@@ -1,7 +1,4 @@
-@import '../../node_modules/bootstrap/scss/functions';
-@import '../../node_modules/bootstrap/scss/variables';
-
-.backdrop {
+.modal__backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -21,6 +18,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+}
+
+.modal__header {
+  background-color: $blue-600;
 }
 
 @media (min-width: 768px) {

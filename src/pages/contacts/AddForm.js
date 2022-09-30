@@ -1,16 +1,16 @@
 import { Form, Stack, Row, Col, Button } from 'react-bootstrap';
 import DatePicker from 'react-date-picker';
 
-import useInput from '../../../hooks/use-input';
-import useDatepicker from '../../../hooks/use-datepciker';
+import useInput from '../../hooks/use-input';
+import useDatepicker from '../../hooks/use-datepciker';
 import {
   maxLength20Validator,
   maxLength30Validator,
   notEmptyValidator,
-} from '../../../utility/validators';
+} from '../../utility/validators';
 
 // Customize DatePicker css
-import '../../../sass/DatePicker.scss';
+import '../../sass/main.module.scss';
 import { useState } from 'react';
 
 const nameValidator = (value) => {

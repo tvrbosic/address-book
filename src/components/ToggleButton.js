@@ -7,7 +7,7 @@ import {
   ToggleOn,
 } from 'react-bootstrap-icons';
 
-import styles from './ToggleButton.module.css';
+import styles from '../sass/main.module.scss';
 
 const ToggleIconButton = (props) => {
   let iconOff, iconOn;
@@ -28,7 +28,7 @@ const ToggleIconButton = (props) => {
   }
   return (
     <span
-      className={`${props.className} ${styles.container}`}
+      className={`${props.className} ${styles['hover-pointer']}`}
       onClick={props.onClick}>
       {props.active ? iconOn : iconOff}
     </span>

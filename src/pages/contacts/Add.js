@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { Stack } from 'react-bootstrap';
 
-import styles from './ContactModals.module.scss';
-import useHttp from '../../../hooks/use-http';
-import { contactsActions } from '../../../store/contacts-slice';
-import AddContactForm from './AddContactForm';
+import styles from '../../sass/main.module.scss';
+import useHttp from '../../hooks/use-http';
+import { contactsActions } from '../../store/contacts-slice';
+import AddContactForm from './AddForm';
 
 const AddContact = ({ userId, closeModal }) => {
   const { sendRequest } = useHttp();
@@ -42,7 +42,7 @@ const AddContact = ({ userId, closeModal }) => {
   return (
     <Stack>
       <div
-        className={`${styles.header} p-3 text-center fs-4 fw-bold text-white border-bottom rounded-top`}>
+        className={`${styles.modal__header} p-3 text-center fs-4 fw-bold text-white border-bottom rounded-top`}>
         Add New Contact
       </div>
       <AddContactForm onSubmit={addContactRequest} />
