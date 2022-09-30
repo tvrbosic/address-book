@@ -6,13 +6,14 @@ import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
 import AddContactForm from './AddContactForm';
 
-const AddContact = ({ userId }) => {
+const AddContact = ({ userId, closeModal }) => {
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
 
   const requestSuccessHandler = (data) => {
     // After successful database update, update app state
     dispatch(contactsActions.addOrUpdateContact(data));
+    closeModal();
   };
 
   const addContactRequest = (contactData) => {

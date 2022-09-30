@@ -51,7 +51,6 @@ const useDatepicker = (initialValue, validateInput) => {
   };
 
   const validateHandler = () => {
-    console.log(state.value);
     dispatch({
       type: 'VALIDATE',
       payload: { isValid: validateInput(state.value) },

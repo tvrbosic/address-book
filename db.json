@@ -72,6 +72,17 @@
       "favourite": false,
       "user": 1,
       "id": 6
+    },
+    {
+      "name": "asd",
+      "surname": "asd",
+      "birth": 1664530203837,
+      "type": "mobile",
+      "contact": "asd",
+      "star": false,
+      "favourite": false,
+      "user": 1,
+      "id": 7
     }
   ]
 }
