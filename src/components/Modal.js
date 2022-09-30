@@ -5,7 +5,6 @@ import styles from '../sass/main.module.scss';
 const Backdrop = (props) => {
   return <div className={styles.modal__backdrop} onClick={props.onClose}></div>;
 };
-console.log(styles);
 
 const ModalOverlay = (props) => {
   return (
