@@ -34,6 +34,9 @@ const AddContact = ({ userId, closeModal }) => {
       },
       requestSuccessHandler
     );
+    // TODO: Handle error by displaying message
+    // Close modal on error
+    closeModal();
   };
 
   return (
