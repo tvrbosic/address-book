@@ -39,7 +39,7 @@ const ContactsPage = () => {
     );
   }, [sendRequest, fetchedDataHandler, userId]);
 
-  const searchHandler = (event) => {
+  const searchTextHandler = (event) => {
     clearTimeout(searchDebounceTimer);
     searchDebounceTimer = setTimeout(() => {
       const searchedText = event.target.value.toLowerCase();
@@ -53,6 +53,18 @@ const ContactsPage = () => {
       });
       setFilteredContacts(data);
     }, 400);
+  };
+
+  const filterDateHandler = (date) => {
+    if (date) {
+      const filterDate = date.setHours(0, 0, 0, 0);
+      const data = contacts.filter(
+        (contact) => new Date(contact.birth).setHours(0, 0, 0, 0) === filterDate
+      );
+      setFilteredContacts(data);
+    } else {
+      setFilteredContacts(null);
+    }
   };
 
   const sortContacts = (sortAttribute) => {
@@ -70,7 +82,10 @@ const ContactsPage = () => {
     <Container fluid className='p-0'>
       <Header />
       <MainPanel addContactClick={() => setDisplayAddModal(true)} />
-      <SearchPanel onSearch={searchHandler} />
+      <SearchPanel
+        searchText={searchTextHandler}
+        filterDate={filterDateHandler}
+      />
       {dataLoaded && (
         <DataTable
           data={filteredContacts || contacts}

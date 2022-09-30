@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Container, Row, Col, Form, InputGroup, Navbar } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
@@ -9,8 +9,12 @@ import styles from '../../sass/main.module.scss';
 // Customize DatePicker css
 import '../../sass/customized/_react-date-picker.scss';
 
-const SearchPanel = ({ onSearch }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const SearchPanel = ({ searchText, filterDate }) => {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  useEffect(() => {
+    filterDate(selectedDate);
+  }, [selectedDate]);
 
   return (
     <Container fluid className={`${styles['bg-gray-200']} px-4 py-3`}>
@@ -23,7 +27,7 @@ const SearchPanel = ({ onSearch }) => {
             <Form.Control
               placeholder='Search...'
               className='flex-grow-1'
-              onChange={onSearch}
+              onChange={searchText}
             />
           </InputGroup>
         </Col>
