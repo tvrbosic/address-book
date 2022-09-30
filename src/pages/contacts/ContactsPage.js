@@ -16,10 +16,14 @@ import DataTable from '../../components/table/DataTable';
 const ContactsPage = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
+  const [filteredContacts, setFilteredContacts] = useState(null);
+
   const userId = useSelector((state) => state.user.id);
-  const contactData = useSelector((state) => state.contacts.list);
+  const contacts = useSelector((state) => state.contacts.list);
+
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
+  let searchDebounceTimer;
 
   const fetchedDataHandler = useCallback(
     (data) => {
@@ -35,6 +39,22 @@ const ContactsPage = () => {
     );
   }, [sendRequest, fetchedDataHandler, userId]);
 
+  const searchHandler = (event) => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      const searchedText = event.target.value.toLowerCase();
+      const data = contacts.filter((contact) => {
+        if (
+          contact.name.toLowerCase().includes(searchedText) ||
+          contact.surname.toLowerCase().includes(searchedText)
+        ) {
+          return contact;
+        }
+      });
+      setFilteredContacts(data);
+    }, 400);
+  };
+
   const sortContacts = (sortAttribute) => {
     dispatch(contactsActions.sortContacts(sortAttribute));
   };
@@ -44,16 +64,16 @@ const ContactsPage = () => {
     setDisplayDeleteModal(false);
   };
 
-  const dataLoaded = contactData.length > 0 ? true : false;
+  const dataLoaded = contacts.length > 0 ? true : false;
 
   return (
     <Container fluid className='p-0'>
       <Header />
       <MainPanel addContactClick={() => setDisplayAddModal(true)} />
-      <SearchPanel />
+      <SearchPanel onSearch={searchHandler} />
       {dataLoaded && (
         <DataTable
-          data={contactData}
+          data={filteredContacts || contacts}
           sort={sortContacts}
           deleteConfirmation={() => setDisplayDeleteModal(true)}
         />

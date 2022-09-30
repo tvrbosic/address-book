@@ -4,13 +4,12 @@ import { Container, Row, Col, Form, InputGroup, Navbar } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 
 import DatePicker from 'react-date-picker';
-//import DatePicker from 'react-date-picker/dist/entry.nostyle';
 
 import styles from '../../sass/main.module.scss';
 // Customize DatePicker css
 import '../../sass/customized/_react-date-picker.scss';
 
-const SearchPanel = () => {
+const SearchPanel = ({ onSearch }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
@@ -18,10 +17,14 @@ const SearchPanel = () => {
       <Row>
         <Col xs={12} md={4} xl={6} className='mb-3 mb-md-0'>
           <InputGroup>
-            <InputGroup.Text id='search-input'>
-              <Search className='fs-5' />
+            <InputGroup.Text id='search-input' className='bg-success'>
+              <Search className='fs-5 text-light' />
             </InputGroup.Text>
-            <Form.Control placeholder='Search...' className='flex-grow-1' />
+            <Form.Control
+              placeholder='Search...'
+              className='flex-grow-1'
+              onChange={onSearch}
+            />
           </InputGroup>
         </Col>
 
