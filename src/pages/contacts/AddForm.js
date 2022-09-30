@@ -165,7 +165,10 @@ const AddContactForm = (props) => {
         </Row>
       </Stack>
       <Form.Group className='mt-3 text-center'>
-        <Button variant='success' type='submit'>
+        <Button variant='secondary' onClick={props.onClose}>
+          Cancel
+        </Button>
+        <Button variant='success' type='submit' className='ms-3'>
           Add Contact
         </Button>
       </Form.Group>

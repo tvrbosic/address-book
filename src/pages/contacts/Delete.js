@@ -11,15 +11,17 @@ const DeleteContact = ({ closeModal }) => {
     (state) => state.contacts.contactToDelete
   );
   const [requestSent, setRequestSent] = useState();
-  const { error, sendRequest } = useHttp();
+  const { sendRequest, error } = useHttp();
   const dispatch = useDispatch();
 
   const requestSuccessHandler = () => {
+    // After successful database update, update app state
     dispatch(contactsActions.deleteContact(contactToDelete.id));
   };
 
   const confirmDeleteHandler = () => {
     setRequestSent(true);
+    // Delete contact from database
     sendRequest(
       {
         url: `http://localhost:3001/contacts/${contactToDelete.id}`,
@@ -86,16 +88,16 @@ const DeleteContact = ({ closeModal }) => {
         Delete Contact
       </div>
       <div className='p-5 text-center'>
-        {!requestSent ? renderQuestion() : null}
-        {requestSent ? renderMessage(error) : null}
+        {!requestSent ? renderQuestion() : renderMessage(error)}
       </div>
       <div className='d-flex justify-content-center pb-4'>
-        {!requestSent ? renderDeleteButtons() : null}
-        {requestSent ? (
+        {!requestSent ? (
+          renderDeleteButtons()
+        ) : (
           <Button variant='success' onClick={closeModal}>
             Close
           </Button>
-        ) : null}
+        )}
       </div>
     </Stack>
   );
