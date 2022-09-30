@@ -29,7 +29,11 @@ const SearchPanel = () => {
       </InputGroup>
 
       <div className='d-flex'>
-        <DatePicker value={selectedDate} onChange={setSelectedDate} />
+        <DatePicker
+          value={selectedDate}
+          onChange={setSelectedDate}
+          format={'dd/MM/y'}
+        />
       </div>
 
       <div className='d-flex align-items-center '>

@@ -130,6 +130,7 @@ const AddContactForm = (props) => {
               onBlur={birthBlurHandler}
               clearIcon={null}
               required={true}
+              format={'dd/MM/y'}
             />
           </Col>
         </Row>

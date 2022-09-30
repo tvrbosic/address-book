@@ -46,11 +46,15 @@ const TableRow = ({ contact }) => {
     );
   };
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('hr-HR');
+  };
+
   return (
     <tr>
       <td className='text-primary'>{contact.name}</td>
       <td className='text-primary'>{contact.surname}</td>
-      <td>{contact.birth}</td>
+      <td>{formatDate(contact.birth)}</td>
       <td>{contact.type}</td>
       <td className='text-primary'>{contact.contact}</td>
       <td className='d-flex justify-content-around align-items-center'>
