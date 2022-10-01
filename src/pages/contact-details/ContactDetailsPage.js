@@ -49,9 +49,9 @@ const ContactDetails = () => {
             title={`${displayedContact.name} ${displayedContact.surname} `}
             className={`${styles['bg-gray-200']}`}>
             <Button
-              variant='outline-primary'
+              variant={`${editDisabled ? 'outline-primary' : 'primary'}`}
               className='ms-auto'
-              onClick={() => setEditDisabled(false)}>
+              onClick={() => setEditDisabled(!editDisabled)}>
               Edit
             </Button>
             <Button variant='outline-danger'>Delete</Button>
