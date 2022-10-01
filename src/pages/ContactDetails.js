@@ -44,6 +44,44 @@ const ContactDetails = () => {
     console.log('TODO: Update request sent!');
   };
 
+  const requestSuccessHandler = (data) => {
+    // After successful database update, update app state
+    dispatch(contactsActions.addOrUpdateContact(data));
+    dispatch(contactsActions.setDisplayContact(data));
+  };
+
+  const starClickHandler = (event) => {
+    // Stop propagation to prevent click event on <tr> and trigger displayContactDetails
+    event.stopPropagation();
+    // Update contact in database
+    sendRequest(
+      {
+        url: `http://localhost:3001/contacts/${id}`,
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: { star: !displayedContact.star },
+      },
+      requestSuccessHandler
+    );
+  };
+
+  const favouriteClickHandler = () => {
+    // Update contact in database
+    sendRequest(
+      {
+        url: `http://localhost:3001/contacts/${id}`,
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: { favourite: !displayedContact.favourite },
+      },
+      requestSuccessHandler
+    );
+  };
+
   const hideModalHandler = () => {
     setDisplayDeleteModal(false);
     navigate('/contacts');
@@ -69,8 +107,16 @@ const ContactDetails = () => {
               Delete
             </Button>
             <span>Mark as: </span>
-            <ToggleIconButton icon='star' />
-            <ToggleIconButton icon='heart' />
+            <ToggleIconButton
+              icon='star'
+              active={displayedContact.star}
+              onClick={starClickHandler}
+            />
+            <ToggleIconButton
+              icon='heart'
+              active={displayedContact.favourite}
+              onClick={favouriteClickHandler}
+            />
           </MainPanel>
 
           <Row className={`${styles['bg-gray-100']} p-5 m-0 flex-grow-1`}>

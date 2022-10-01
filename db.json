@@ -46,8 +46,8 @@
       "birth": 453413860000,
       "type": "pager",
       "contact": "987456123",
-      "favourite": false,
-      "star": true,
+      "favourite": true,
+      "star": false,
       "user": 1,
       "id": 4
     }
