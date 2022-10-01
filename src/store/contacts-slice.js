@@ -2,6 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   list: [],
+  filteredList: null,
+  contactToDisplay: {
+    name: '',
+    surname: '',
+    birth: 0,
+    type: 'mobile',
+    contact: '',
+    favourite: false,
+    star: false,
+    user: 0,
+    id: 0,
+  },
+  contactToDelete: null,
   sortAscending: {
     name: true,
     surname: true,
@@ -9,8 +22,6 @@ const initialState = {
     type: true,
     contact: true,
   },
-  filteredList: null,
-  contactToDelete: null,
 };
 
 const contactsSlice = createSlice({
@@ -19,6 +30,9 @@ const contactsSlice = createSlice({
   reducers: {
     setContacts(state, action) {
       state.list = action.payload;
+    },
+    setDisplayContact(state, action) {
+      state.contactToDisplay = action.payload;
     },
     addOrUpdateContact(state, action) {
       const newContact = action.payload;
