@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <Stack direction='horizontal' className='px-5 py-2 bg-dark'>
-      <span className='fs-5 text-white'>AddressBook</span>
+      <span className='fs-5 text-white'>Address Book</span>
       <span className='ms-auto text-secondary'>Signed in as: </span>
       <span className='ms-1 text-light'>{email}</span>
       <Nav>

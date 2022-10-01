@@ -11,7 +11,7 @@ const LoginForm = (props) => {
     onChange: emailChangeHandler,
     onBlur: emailBlurHandler,
     validate: validateEmail,
-  } = useInput(emailValidator);
+  } = useInput('', emailValidator);
 
   const {
     value: password,
@@ -20,7 +20,7 @@ const LoginForm = (props) => {
     onChange: passwordChangeHandler,
     onBlur: passwordBlurHandler,
     validate: validatePassword,
-  } = useInput(passwordValidator);
+  } = useInput('', passwordValidator);
 
   const submitHandler = (event) => {
     event.preventDefault();

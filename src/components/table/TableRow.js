@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { Button } from 'react-bootstrap';
@@ -10,15 +11,26 @@ import TypeIcon from '../../components/TypeIcon';
 import ToggleIconButton from '../ToggleButton';
 
 const TableRow = ({ contact, deleteConfirmation }) => {
+  let navigate = useNavigate();
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
+
+  const displayContactDetails = () => {
+    navigate(`/contacts/${contact.id}`);
+  };
+
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('hr-HR');
+  };
 
   const requestSuccessHandler = (data) => {
     // After successful database update, update app state
     dispatch(contactsActions.addOrUpdateContact(data));
   };
 
-  const starClickHandler = () => {
+  const starClickHandler = (event) => {
+    // Stop propagation to prevent click event on <tr> and trigger displayContactDetails
+    event.stopPropagation();
     // Update contact in database
     sendRequest(
       {
@@ -33,7 +45,9 @@ const TableRow = ({ contact, deleteConfirmation }) => {
     );
   };
 
-  const favouriteClickHandler = () => {
+  const favouriteClickHandler = (event) => {
+    // Stop propagation to prevent click event on <tr> and trigger displayContactDetails
+    event.stopPropagation();
     // Update contact in database
     sendRequest(
       {
@@ -48,17 +62,17 @@ const TableRow = ({ contact, deleteConfirmation }) => {
     );
   };
 
-  const trashClickHandler = () => {
+  const trashClickHandler = (event) => {
+    // Stop propagation to prevent click event on <tr> and trigger displayContactDetails
+    event.stopPropagation();
     dispatch(contactsActions.setContactToDelete(contact.id));
     deleteConfirmation();
   };
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('hr-HR');
-  };
-
   return (
-    <tr>
+    <tr
+      onClick={displayContactDetails}
+      className={`${styles['hover-pointer']}`}>
       <td className='text-primary'>{contact.name}</td>
       <td className='text-primary'>{contact.surname}</td>
       <td className={styles['text-gray-600']}>{formatDate(contact.birth)}</td>

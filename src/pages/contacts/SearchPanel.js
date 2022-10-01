@@ -17,8 +17,6 @@ const SearchPanel = () => {
   const dispatch = useDispatch();
   let searchDebounceTimer;
 
-  console.log(selectedType);
-
   useEffect(() => {
     dispatch(
       applyContactFilters(contacts, searchedText, selectedDate, selectedType)

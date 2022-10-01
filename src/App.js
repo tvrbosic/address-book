@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { initStorageSession } from './store/user-actions';
 import LoginPage from './pages/login/LoginPage';
 import ContactsPage from './pages/contacts/ContactsPage';
+import ContactDetails from './pages/contact-details/ContactDetailsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,15 +15,16 @@ function App() {
   const userLoggedIn = useSelector((state) => state.user.loggedIn);
 
   return (
-    <>
-      <Routes>
-        <Route exact path='/' element={<LoginPage />} />
-        {userLoggedIn && (
+    <Routes>
+      <Route exact path='/' element={<LoginPage />} />
+      {userLoggedIn && (
+        <>
           <Route exact path='/contacts' element={<ContactsPage />} />
-        )}
-        <Route exact path='*' element={<Navigate to={'/'} replace />} />
-      </Routes>
-    </>
+          <Route exact path='/contacts/:id' element={<ContactDetails />} />
+        </>
+      )}
+      <Route exact path='*' element={<Navigate to={'/'} replace />} />
+    </Routes>
   );
 }
 

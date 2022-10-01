@@ -1,16 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Container } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
+import PageLayout from '../../components/PageLayout';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import Header from '../../components/Header';
 import Modal from '../../components/Modal';
 import AddContact from './Add';
 import DeleteContact from './Delete';
-import MainPanel from './MainPanel';
+import MainPanel from '../../components/MainPanel';
 import SearchPanel from './SearchPanel';
 import DataTable from '../../components/table/DataTable';
 
@@ -47,10 +48,23 @@ const ContactsPage = () => {
   const dataLoaded = contacts.length > 0 ? true : false;
 
   return (
-    <Container fluid className='p-0'>
+    <PageLayout>
       <Header />
-      <MainPanel addContactClick={() => setDisplayAddModal(true)} />
+
+      <MainPanel title='My Contacts'>
+        <Button variant='outline-warning' className='ms-auto'>
+          Starred
+        </Button>
+        <Button variant='outline-danger'>Favourites</Button>
+        <Button
+          variant='outline-success'
+          onClick={() => setDisplayAddModal(true)}>
+          Add Contact
+        </Button>
+      </MainPanel>
+
       <SearchPanel />
+
       {dataLoaded && (
         <DataTable
           data={filteredContacts || contacts}
@@ -58,6 +72,7 @@ const ContactsPage = () => {
         />
       )}
       {!dataLoaded && <LoadingOverlay />}
+
       {displayAddModal && (
         <Modal onClose={hideModalHandler}>
           <AddContact userId={userId} closeModal={hideModalHandler} />
@@ -68,7 +83,7 @@ const ContactsPage = () => {
           <DeleteContact closeModal={hideModalHandler} />
         </Modal>
       )}
-    </Container>
+    </PageLayout>
   );
 };
 

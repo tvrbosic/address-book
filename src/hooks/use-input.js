@@ -30,8 +30,11 @@ const inputStateReducer = (state, action) => {
   return initialState;
 };
 
-const useInput = (validateInput) => {
-  const [state, dispatch] = useReducer(inputStateReducer, initialState);
+const useInput = (initialValue, validateInput) => {
+  const [state, dispatch] = useReducer(inputStateReducer, {
+    ...initialState,
+    value: initialValue,
+  });
 
   const hasError = !state.isValid && state.isTouched;
 

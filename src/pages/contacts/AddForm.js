@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form, Stack, Row, Col, Button } from 'react-bootstrap';
 import DatePicker from 'react-date-picker';
 
@@ -11,7 +12,6 @@ import {
 
 // Customize DatePicker css
 import '../../sass/main.module.scss';
-import { useState } from 'react';
 
 const nameValidator = (value) => {
   return notEmptyValidator(value) && maxLength20Validator(value);
@@ -29,7 +29,7 @@ const AddContactForm = (props) => {
     onChange: nameChangeHandler,
     onBlur: nameBlurHandler,
     validate: validateName,
-  } = useInput(nameValidator);
+  } = useInput('', nameValidator);
 
   const {
     value: surname,
@@ -38,7 +38,7 @@ const AddContactForm = (props) => {
     onChange: surnameChangeHandler,
     onBlur: surnameBlurHandler,
     validate: validateSurname,
-  } = useInput(surnameValidator);
+  } = useInput('', surnameValidator);
 
   const {
     value: birth,
@@ -58,7 +58,7 @@ const AddContactForm = (props) => {
     onChange: contactChangeHandler,
     onBlur: contactBlurHandler,
     validate: validateContact,
-  } = useInput(notEmptyValidator);
+  } = useInput('', notEmptyValidator);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -101,7 +101,8 @@ const AddContactForm = (props) => {
               value={name}
               onChange={nameChangeHandler}
               onBlur={nameBlurHandler}
-              className={`${nameHasError && 'is-invalid'}`}></Form.Control>
+              className={`${nameHasError && 'is-invalid'}`}
+            />
           </Col>
         </Row>
 
@@ -115,7 +116,8 @@ const AddContactForm = (props) => {
               value={surname}
               onChange={surnameChangeHandler}
               onBlur={surnameBlurHandler}
-              className={`${surnameHasError && 'is-invalid'}`}></Form.Control>
+              className={`${surnameHasError && 'is-invalid'}`}
+            />
           </Col>
         </Row>
 
@@ -160,7 +162,8 @@ const AddContactForm = (props) => {
               value={contact}
               onChange={contactChangeHandler}
               onBlur={contactBlurHandler}
-              className={`${contactHasError && 'is-invalid'}`}></Form.Control>
+              className={`${contactHasError && 'is-invalid'}`}
+            />
           </Col>
         </Row>
       </Stack>
