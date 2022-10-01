@@ -1,5 +1,16 @@
 import { contactsActions } from './contacts-slice';
 
+const typeFilter = (inputData, type) => {
+  if (type && type !== 'all') {
+    // Type not empty, filter and return data
+    const data = inputData.filter((contact) => contact.type === type);
+    return data;
+  } else {
+    // Type filter not applied, return inputData
+    return inputData;
+  }
+};
+
 const dateFilter = (inputData, date) => {
   if (date) {
     // Date not empty, filter and return data
@@ -29,10 +40,11 @@ const textFilter = (inputData, text) => {
   }
 };
 
-export const applyContactFilters = (inputData, text, date) => {
+export const applyContactFilters = (inputData, text, date, type) => {
   return (dispatch) => {
     let resultData;
-    resultData = dateFilter(inputData, date);
+    resultData = typeFilter(inputData, type);
+    resultData = dateFilter(resultData, date);
     resultData = textFilter(resultData, text);
     dispatch(contactsActions.setFilteredList(resultData));
   };

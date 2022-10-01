@@ -13,18 +13,27 @@ const SearchPanel = () => {
   const contacts = useSelector((state) => state.contacts.list);
   const [searchedText, setSearchedText] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedType, setSelectedType] = useState('all');
   const dispatch = useDispatch();
   let searchDebounceTimer;
 
+  console.log(selectedType);
+
   useEffect(() => {
-    dispatch(applyContactFilters(contacts, searchedText, selectedDate));
-  }, [dispatch, contacts, searchedText, selectedDate]);
+    dispatch(
+      applyContactFilters(contacts, searchedText, selectedDate, selectedType)
+    );
+  }, [dispatch, contacts, searchedText, selectedDate, selectedType]);
 
   const searchTextHandler = (event) => {
     clearTimeout(searchDebounceTimer);
     searchDebounceTimer = setTimeout(() => {
       setSearchedText(event.target.value);
     }, 400);
+  };
+
+  const selectTypeHandler = (event) => {
+    setSelectedType(event.target.value);
   };
 
   return (
@@ -64,7 +73,7 @@ const SearchPanel = () => {
               <Navbar.Text>Type:</Navbar.Text>
             </Col>
             <Col xs={8} lg={7}>
-              <Form.Select>
+              <Form.Select onChange={selectTypeHandler}>
                 <option value='all'>All</option>
                 <option value='mobile'>Mobile</option>
                 <option value='landline'>Landline</option>
