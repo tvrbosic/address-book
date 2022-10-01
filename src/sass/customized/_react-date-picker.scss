@@ -29,6 +29,9 @@
   background-color: $white;
   border-radius: 0.5rem !important;
 }
+.react-date-picker--disabled .react-date-picker__wrapper {
+  background-color: $gray-200;
+}
 .react-date-picker__inputGroup {
   min-width: calc((4px * 3) + 0.54em * 8 + 0.217em * 2);
   flex-grow: 1;
