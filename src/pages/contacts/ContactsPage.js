@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { Container } from 'react-bootstrap';
 
 import useHttp from '../../hooks/use-http';
@@ -16,14 +17,13 @@ import DataTable from '../../components/table/DataTable';
 const ContactsPage = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
-  const [filteredContacts, setFilteredContacts] = useState(null);
 
   const userId = useSelector((state) => state.user.id);
   const contacts = useSelector((state) => state.contacts.list);
+  const filteredContacts = useSelector((state) => state.contacts.filteredList);
 
   const { sendRequest } = useHttp();
   const dispatch = useDispatch();
-  let searchDebounceTimer;
 
   const fetchedDataHandler = useCallback(
     (data) => {
@@ -39,34 +39,6 @@ const ContactsPage = () => {
     );
   }, [sendRequest, fetchedDataHandler, userId]);
 
-  const searchTextHandler = (event) => {
-    clearTimeout(searchDebounceTimer);
-    searchDebounceTimer = setTimeout(() => {
-      const searchedText = event.target.value.toLowerCase();
-      const data = contacts.filter((contact) => {
-        if (
-          contact.name.toLowerCase().includes(searchedText) ||
-          contact.surname.toLowerCase().includes(searchedText)
-        ) {
-          return contact;
-        }
-      });
-      setFilteredContacts(data);
-    }, 400);
-  };
-
-  const filterDateHandler = (date) => {
-    if (date) {
-      const filterDate = date.setHours(0, 0, 0, 0);
-      const data = contacts.filter(
-        (contact) => new Date(contact.birth).setHours(0, 0, 0, 0) === filterDate
-      );
-      setFilteredContacts(data);
-    } else {
-      setFilteredContacts(null);
-    }
-  };
-
   const hideModalHandler = () => {
     setDisplayAddModal(false);
     setDisplayDeleteModal(false);
@@ -78,10 +50,7 @@ const ContactsPage = () => {
     <Container fluid className='p-0'>
       <Header />
       <MainPanel addContactClick={() => setDisplayAddModal(true)} />
-      <SearchPanel
-        searchText={searchTextHandler}
-        filterDate={filterDateHandler}
-      />
+      <SearchPanel />
       {dataLoaded && (
         <DataTable
           data={filteredContacts || contacts}

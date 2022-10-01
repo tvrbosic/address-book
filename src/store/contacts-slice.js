@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   list: [],
+  filteredList: [],
   sortAscending: {
     name: true,
     surname: true,
@@ -48,20 +49,6 @@ const contactsSlice = createSlice({
         existingContact.star = newContact.star;
       }
     },
-    setContactToDelete(state, action) {
-      const id = action.payload;
-      const existingContact = state.list.find((contact) => contact.id === id);
-      if (existingContact) {
-        state.contactToDelete = existingContact;
-      }
-    },
-    deleteContact(state, action) {
-      const id = action.payload;
-      const existingContact = state.list.find((contact) => contact.id === id);
-      if (existingContact) {
-        state.list = state.list.filter((contact) => contact.id !== id);
-      }
-    },
     sortContacts(state, action) {
       const sortAttribute = action.payload;
 
@@ -80,6 +67,23 @@ const contactsSlice = createSlice({
       // Toggle sortAscending state for given attribute (action.payload)
       state.sortAscending[action.payload] =
         !state.sortAscending[action.payload];
+    },
+    setFilteredContacts(state, action) {
+      state.filteredList = action.payload;
+    },
+    setContactToDelete(state, action) {
+      const id = action.payload;
+      const existingContact = state.list.find((contact) => contact.id === id);
+      if (existingContact) {
+        state.contactToDelete = existingContact;
+      }
+    },
+    deleteContact(state, action) {
+      const id = action.payload;
+      const existingContact = state.list.find((contact) => contact.id === id);
+      if (existingContact) {
+        state.list = state.list.filter((contact) => contact.id !== id);
+      }
     },
   },
 });

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container, Row, Col, Form, InputGroup, Navbar } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
@@ -8,13 +9,45 @@ import DatePicker from 'react-date-picker';
 import styles from '../../sass/main.module.scss';
 // Customize DatePicker css
 import '../../sass/customized/_react-date-picker.scss';
+import { contactsActions } from '../../store/contacts-slice';
 
-const SearchPanel = ({ searchText, filterDate }) => {
+const SearchPanel = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const contacts = useSelector((state) => state.contacts.list);
+  const dispatch = useDispatch();
+  let searchDebounceTimer;
 
   useEffect(() => {
-    filterDate(selectedDate);
+    filterDateHandler(selectedDate);
   }, [selectedDate]);
+
+  const searchTextHandler = (event) => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      const searchedText = event.target.value.toLowerCase();
+      const data = contacts.filter((contact) => {
+        if (
+          contact.name.toLowerCase().includes(searchedText) ||
+          contact.surname.toLowerCase().includes(searchedText)
+        ) {
+          return contact;
+        }
+      });
+      dispatch(contactsActions.setFilteredContacts(data));
+    }, 400);
+  };
+
+  const filterDateHandler = (date) => {
+    if (date) {
+      const filterDate = date.setHours(0, 0, 0, 0);
+      const data = contacts.filter(
+        (contact) => new Date(contact.birth).setHours(0, 0, 0, 0) === filterDate
+      );
+      dispatch(contactsActions.setFilteredContacts(data));
+    } else {
+      dispatch(contactsActions.setFilteredContacts(null));
+    }
+  };
 
   return (
     <Container fluid className={`${styles['bg-gray-200']} px-4 py-3`}>
@@ -27,7 +60,7 @@ const SearchPanel = ({ searchText, filterDate }) => {
             <Form.Control
               placeholder='Search...'
               className='flex-grow-1'
-              onChange={searchText}
+              onChange={searchTextHandler}
             />
           </InputGroup>
         </Col>
