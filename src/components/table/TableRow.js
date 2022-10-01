@@ -7,8 +7,8 @@ import { TrashFill } from 'react-bootstrap-icons';
 import styles from '../../sass/main.module.scss';
 import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
-import TypeIcon from '../../components/TypeIcon';
-import ToggleIconButton from '../ToggleButton';
+import TypeIcon from '../TypeIcon';
+import ToggleIconButton from '../ToggleIconButton';
 
 const TableRow = ({ contact, deleteConfirmation }) => {
   let navigate = useNavigate();

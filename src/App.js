@@ -2,9 +2,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { initStorageSession } from './store/user-actions';
-import LoginPage from './pages/login/LoginPage';
-import ContactsPage from './pages/contacts/ContactsPage';
-import ContactDetails from './pages/contact-details/ContactDetailsPage';
+import LoginPage from './pages/Login';
+import ContactsPage from './pages/Contacts';
+import ContactDetails from './pages/ContactDetails';
 
 function App() {
   const dispatch = useDispatch();

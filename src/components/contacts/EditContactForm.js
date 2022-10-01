@@ -22,7 +22,7 @@ const surnameValidator = (value) => {
   return notEmptyValidator(value) && maxLength30Validator(value);
 };
 
-const DetailsForm = ({ displayedContact, editDisabled, onSubmit }) => {
+const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
   const navigate = useNavigate();
 
   const {
@@ -175,4 +175,4 @@ const DetailsForm = ({ displayedContact, editDisabled, onSubmit }) => {
   );
 };
 
-export default DetailsForm;
+export default EditContactForm;

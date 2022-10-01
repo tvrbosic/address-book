@@ -1,7 +1,7 @@
 import { Form, Button } from 'react-bootstrap';
 
-import useInput from '../../hooks/use-input';
-import { emailValidator, passwordValidator } from '../../utility/validators';
+import useInput from '../hooks/use-input';
+import { emailValidator, passwordValidator } from '../utility/validators';
 
 const LoginForm = (props) => {
   const {

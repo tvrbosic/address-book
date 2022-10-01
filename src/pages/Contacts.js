@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from 'react-bootstrap';
 
-import useHttp from '../../hooks/use-http';
-import { contactsActions } from '../../store/contacts-slice';
-import PageLayout from '../../components/PageLayout';
-import LoadingOverlay from '../../components/LoadingOverlay';
-import Header from '../../components/Header';
-import Modal from '../../components/Modal';
-import AddContact from './Add';
-import DeleteContact from './Delete';
-import MainPanel from '../../components/MainPanel';
-import SearchPanel from './SearchPanel';
-import DataTable from '../../components/table/DataTable';
+import useHttp from '../hooks/use-http';
+import { contactsActions } from '../store/contacts-slice';
+import PageLayout from '../components/PageLayout';
+import LoadingOverlay from '../components/LoadingOverlay';
+import Header from '../components/Header';
+import Modal from '../components/Modal';
+import AddContact from '../components/contacts/AddContact';
+import DeleteContact from '../components/contacts/DeleteContact';
+import MainPanel from '../components/MainPanel';
+import SearchPanel from '../components/contacts/SearchPanel';
+import DataTable from '../components/table/DataTable';
 
 const ContactsPage = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
