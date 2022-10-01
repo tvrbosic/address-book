@@ -1,52 +1,30 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col, Form, InputGroup, Navbar } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
-
 import DatePicker from 'react-date-picker';
 
-import styles from '../../sass/main.module.scss';
 // Customize DatePicker css
 import '../../sass/customized/_react-date-picker.scss';
-import { contactsActions } from '../../store/contacts-slice';
+import styles from '../../sass/main.module.scss';
+import { applyContactFilters } from '../../store/contacts-actions';
 
 const SearchPanel = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
   const contacts = useSelector((state) => state.contacts.list);
+  const [searchedText, setSearchedText] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
   let searchDebounceTimer;
 
   useEffect(() => {
-    filterDateHandler(selectedDate);
-  }, [selectedDate]);
+    dispatch(applyContactFilters(contacts, searchedText, selectedDate));
+  }, [dispatch, contacts, searchedText, selectedDate]);
 
   const searchTextHandler = (event) => {
     clearTimeout(searchDebounceTimer);
     searchDebounceTimer = setTimeout(() => {
-      const searchedText = event.target.value.toLowerCase();
-      const data = contacts.filter((contact) => {
-        if (
-          contact.name.toLowerCase().includes(searchedText) ||
-          contact.surname.toLowerCase().includes(searchedText)
-        ) {
-          return contact;
-        }
-      });
-      dispatch(contactsActions.setFilteredContacts(data));
+      setSearchedText(event.target.value);
     }, 400);
-  };
-
-  const filterDateHandler = (date) => {
-    if (date) {
-      const filterDate = date.setHours(0, 0, 0, 0);
-      const data = contacts.filter(
-        (contact) => new Date(contact.birth).setHours(0, 0, 0, 0) === filterDate
-      );
-      dispatch(contactsActions.setFilteredContacts(data));
-    } else {
-      dispatch(contactsActions.setFilteredContacts(null));
-    }
   };
 
   return (
@@ -87,6 +65,7 @@ const SearchPanel = () => {
             </Col>
             <Col xs={8} lg={7}>
               <Form.Select>
+                <option value='all'>All</option>
                 <option value='mobile'>Mobile</option>
                 <option value='landline'>Landline</option>
                 <option value='email'>Email</option>
