@@ -67,10 +67,6 @@ const ContactsPage = () => {
     }
   };
 
-  const sortContacts = (sortAttribute) => {
-    dispatch(contactsActions.sortContacts(sortAttribute));
-  };
-
   const hideModalHandler = () => {
     setDisplayAddModal(false);
     setDisplayDeleteModal(false);
@@ -89,7 +85,6 @@ const ContactsPage = () => {
       {dataLoaded && (
         <DataTable
           data={filteredContacts || contacts}
-          sort={sortContacts}
           deleteConfirmation={() => setDisplayDeleteModal(true)}
         />
       )}

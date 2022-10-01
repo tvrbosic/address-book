@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import { Table } from 'react-bootstrap';
 
@@ -11,10 +10,7 @@ const itemsPerPage = 20;
 
 const DataTable = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState(null);
-  const attributeSortDirections = useSelector(
-    (state) => state.contacts.sortAscending
-  );
+
   const maxPage = Math.ceil(props.data.length / itemsPerPage);
 
   const currentPageData = props.data.slice(
@@ -22,19 +18,10 @@ const DataTable = (props) => {
     currentPage * itemsPerPage
   );
 
-  const sortHandler = (sortAttribute) => {
-    setSortBy(sortAttribute);
-    props.sort(sortAttribute);
-  };
-
   return (
     <>
       <Table hover className='text-center align-middle border-top'>
-        <TableHeader
-          sortBy={sortBy}
-          attributeSortDirections={attributeSortDirections}
-          sortHandler={sortHandler}
-        />
+        <TableHeader />
 
         <tbody>
           {currentPageData.map((contact) => (
