@@ -141,7 +141,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
           <Form.Group className='mb-2'>
             <Form.Label>Type</Form.Label>
             <Form.Select
-              value={displayedContact.type}
+              defaultValue={displayedContact.type}
               onChange={(event) => setContactType(event.target.value)}
               disabled={editDisabled}>
               <option value='mobile'>Mobile</option>

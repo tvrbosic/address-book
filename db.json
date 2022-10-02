@@ -10,8 +10,8 @@
     {
       "name": "Leanne",
       "surname": "Howell",
-      "birth": 648505060000,
-      "type": "landline",
+      "birth": 645573600000,
+      "type": "mobile",
       "contact": "+385981234567",
       "star": false,
       "favourite": true,
@@ -22,10 +22,10 @@
       "name": "Ervin",
       "surname": "Graham",
       "birth": 576274660000,
-      "type": "landline",
+      "type": "mobile",
       "contact": "+38511234567",
-      "favourite": false,
       "star": false,
+      "favourite": false,
       "user": 1,
       "id": 2
     },
@@ -33,7 +33,7 @@
       "name": "Clementine",
       "surname": "Dietrich",
       "birth": 843423460000,
-      "type": "mobile",
+      "type": "email",
       "contact": "clementine.dietrich@mail.com",
       "star": true,
       "favourite": true,
@@ -43,11 +43,11 @@
     {
       "name": "Chelsey",
       "surname": "Runolfsdottir",
-      "birth": 453413860000,
-      "type": "pager",
+      "birth": 453420000000,
+      "type": "mobile",
       "contact": "987456123",
-      "favourite": true,
       "star": false,
+      "favourite": true,
       "user": 1,
       "id": 4
     }
