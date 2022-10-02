@@ -7,14 +7,14 @@ import { Button } from 'react-bootstrap';
 import useHttp from '../hooks/use-http';
 import { contactsActions } from '../store/contacts-slice';
 import PageLayout from '../components/PageLayout';
-import LoadingOverlay from '../components/LoadingOverlay';
 import Header from '../components/Header';
-import Modal from '../components/Modal';
-import AddContact from '../components/contacts/AddContact';
-import DeleteContact from '../components/contacts/DeleteContact';
 import MainPanel from '../components/MainPanel';
 import SearchPanel from '../components/contacts/SearchPanel';
 import DataTable from '../components/table/DataTable';
+import AddContact from '../components/contacts/AddContact';
+import DeleteContact from '../components/contacts/DeleteContact';
+import Modal from '../components/Modal';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 const ContactsPage = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
