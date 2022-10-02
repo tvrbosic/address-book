@@ -1,9 +1,13 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 const initialState = {
   value: '',
   isValid: false,
   isTouched: false,
+};
+
+const initialize = (initialValue) => {
+  return { ...initialState, value: initialValue };
 };
 
 const inputStateReducer = (state, action) => {
@@ -27,6 +31,10 @@ const inputStateReducer = (state, action) => {
   if (action.type === 'RESET') {
     return { value: '', isValid: false, isTouched: false };
   }
+  if (action.type === 'REINITIALIZE') {
+    // Used to trigger re-render if initial value is changed
+    return { value: action.payload, isValid: false, isTouched: false };
+  }
   return initialState;
 };
 
@@ -35,6 +43,10 @@ const useInput = (initialValue, validateInput) => {
     ...initialState,
     value: initialValue,
   });
+
+  useEffect(() => {
+    dispatch({ type: 'REINITIALIZE', payload: initialValue });
+  }, [initialValue]);
 
   const hasError = !state.isValid && state.isTouched;
 

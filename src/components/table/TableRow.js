@@ -16,6 +16,8 @@ const TableRow = ({ contact, deleteConfirmation }) => {
   const dispatch = useDispatch();
 
   const displayContactDetails = () => {
+    dispatch(contactsActions.setContactToDisplay(contact));
+    dispatch(contactsActions.setContactToDelete(contact));
     navigate(`/contacts/${contact.id}`);
   };
 

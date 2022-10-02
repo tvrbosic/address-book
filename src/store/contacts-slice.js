@@ -14,7 +14,17 @@ const initialState = {
     user: 0,
     id: 0,
   },
-  contactToDelete: null,
+  contactToDelete: {
+    name: '',
+    surname: '',
+    birth: 0,
+    type: 'mobile',
+    contact: '',
+    favourite: false,
+    star: false,
+    user: 0,
+    id: 0,
+  },
   sortAscending: {
     name: true,
     surname: true,
@@ -31,7 +41,7 @@ const contactsSlice = createSlice({
     setContacts(state, action) {
       state.list = action.payload;
     },
-    setDisplayContact(state, action) {
+    setContactToDisplay(state, action) {
       state.contactToDisplay = action.payload;
     },
     addOrUpdateContact(state, action) {

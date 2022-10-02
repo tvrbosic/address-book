@@ -85,6 +85,9 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
       birth: birth.getTime(),
       type: contactType,
       contact,
+      star: displayedContact.star,
+      favourite: displayedContact.favourite,
+      user: displayedContact.user,
     });
   };
 
@@ -92,6 +95,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
     <Form noValidate onSubmit={submitHandler}>
       <Form.Group className='mb-2'>
         <Form.Label>Name</Form.Label>
+
         <Form.Control
           type='text'
           value={name}

@@ -48,38 +48,37 @@ const ContactsPage = () => {
   return (
     <PageLayout>
       <Header />
-      {!isLoading && (
-        <>
-          <MainPanel title='My Contacts'>
-            <Button variant='outline-warning' className='ms-auto'>
-              Starred
-            </Button>
-            <Button variant='outline-danger'>Favourites</Button>
-            <Button
-              variant='outline-success'
-              onClick={() => setDisplayAddModal(true)}>
-              Add Contact
-            </Button>
-          </MainPanel>
+      <MainPanel title='My Contacts'>
+        <Button variant='outline-warning' className='ms-auto'>
+          Starred
+        </Button>
+        <Button variant='outline-danger'>Favourites</Button>
+        <Button
+          variant='outline-success'
+          onClick={() => setDisplayAddModal(true)}>
+          Add Contact
+        </Button>
+      </MainPanel>
 
-          <SearchPanel />
+      <SearchPanel />
 
-          <DataTable
-            data={filteredContacts || contacts}
-            deleteConfirmation={() => setDisplayDeleteModal(true)}
+      <DataTable
+        data={filteredContacts || contacts}
+        deleteConfirmation={() => setDisplayDeleteModal(true)}
+      />
+
+      {displayAddModal && (
+        <Modal onClose={hideModalHandler}>
+          <AddContact userId={userId} closeModal={hideModalHandler} />
+        </Modal>
+      )}
+      {displayDeleteModal && (
+        <Modal onClose={hideModalHandler}>
+          <DeleteContact
+            closeClick={hideModalHandler}
+            afterDelete={hideModalHandler}
           />
-
-          {displayAddModal && (
-            <Modal onClose={hideModalHandler}>
-              <AddContact userId={userId} closeModal={hideModalHandler} />
-            </Modal>
-          )}
-          {displayDeleteModal && (
-            <Modal onClose={hideModalHandler}>
-              <DeleteContact closeModal={hideModalHandler} />
-            </Modal>
-          )}
-        </>
+        </Modal>
       )}
 
       {isLoading && <LoadingOverlay />}

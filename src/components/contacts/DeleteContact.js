@@ -6,7 +6,7 @@ import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
 import { useState } from 'react';
 
-const DeleteContact = ({ closeModal }) => {
+const DeleteContact = ({ closeClick, afterDelete }) => {
   const contactToDelete = useSelector(
     (state) => state.contacts.contactToDelete
   );
@@ -65,10 +65,10 @@ const DeleteContact = ({ closeModal }) => {
     return message;
   };
 
-  const renderDeleteButtons = () => {
+  const renderChoiceButtons = () => {
     return (
       <>
-        <Button variant='secondary' onClick={closeModal}>
+        <Button variant='secondary' onClick={closeClick}>
           Cancel
         </Button>
         <Button
@@ -92,9 +92,9 @@ const DeleteContact = ({ closeModal }) => {
       </div>
       <div className='d-flex justify-content-center pb-4'>
         {!requestSent ? (
-          renderDeleteButtons()
+          renderChoiceButtons()
         ) : (
-          <Button variant='success' onClick={closeModal}>
+          <Button variant='success' onClick={afterDelete}>
             Close
           </Button>
         )}

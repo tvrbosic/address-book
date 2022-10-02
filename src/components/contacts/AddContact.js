@@ -69,9 +69,11 @@ const AddContact = ({ userId, closeModal }) => {
         Add New Contact
       </div>
 
-      {!requestSent ? (
+      {!requestSent && (
         <AddContactForm onSubmit={addContactRequest} onClose={closeModal} />
-      ) : (
+      )}
+
+      {requestSent && (
         <>
           <div className='p-5 text-center'>{renderMessages(error)}</div>
           <div className='d-flex justify-content-center pb-4'>
