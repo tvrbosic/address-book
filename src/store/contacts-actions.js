@@ -31,7 +31,8 @@ const textFilter = (inputData, text) => {
     const data = inputData.filter(
       (contact) =>
         contact.name.toLowerCase().includes(text) ||
-        contact.surname.toLowerCase().includes(text)
+        contact.surname.toLowerCase().includes(text) ||
+        contact.contact.toLowerCase().includes(text)
     );
     return data;
   } else {
