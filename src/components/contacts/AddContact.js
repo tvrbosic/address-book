@@ -7,7 +7,7 @@ import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-slice';
 import AddContactForm from './AddContactForm';
 
-const AddContact = ({ userId, closeModal }) => {
+const AddContact = ({ userId, closeModal, star = false, favorite = false }) => {
   const [requestSent, setRequestSent] = useState();
   const { sendRequest, error } = useHttp();
   const dispatch = useDispatch();
@@ -29,8 +29,8 @@ const AddContact = ({ userId, closeModal }) => {
         },
         body: {
           ...contactData,
-          star: false,
-          favorite: false,
+          star: star,
+          favorite: favorite,
           user: parseInt(userId),
         },
       },

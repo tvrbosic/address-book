@@ -10,6 +10,9 @@ import Header from '../components/Header';
 import MainPanel from '../components/MainPanel';
 import SearchPanel from '../components/contacts/SearchPanel';
 import DataTable from '../components/table/DataTable';
+import AddContact from '../components/contacts/AddContact';
+import DeleteContact from '../components/contacts/DeleteContact';
+import Modal from '../components/Modal';
 import LoadingOverlay from '../components/LoadingOverlay';
 
 const Favorites = () => {
@@ -45,6 +48,11 @@ const Favorites = () => {
     navigate('/contacts/starred');
   };
 
+  const hideModalHandler = () => {
+    setDisplayAddModal(false);
+    setDisplayDeleteModal(false);
+  };
+
   return (
     <PageLayout>
       <Header />
@@ -72,6 +80,24 @@ const Favorites = () => {
         data={filteredContacts || contacts}
         deleteConfirmation={() => setDisplayDeleteModal(true)}
       />
+
+      {displayAddModal && (
+        <Modal onClose={hideModalHandler}>
+          <AddContact
+            userId={userId}
+            closeModal={hideModalHandler}
+            favorite={true}
+          />
+        </Modal>
+      )}
+      {displayDeleteModal && (
+        <Modal onClose={hideModalHandler}>
+          <DeleteContact
+            closeClick={hideModalHandler}
+            afterDelete={hideModalHandler}
+          />
+        </Modal>
+      )}
 
       {isLoading && <LoadingOverlay />}
     </PageLayout>
