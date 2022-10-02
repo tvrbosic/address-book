@@ -65,7 +65,7 @@ const SearchPanel = () => {
           </Row>
         </Col>
 
-        <Col xs={12} md={3} xl={2} className='mb-md-0'>
+        <Col xs={12} md={3} xl={2} className='mb-3 mb-md-0'>
           <Row className='align-items-center'>
             <Col xs={4} lg={5} className='text-end'>
               <Navbar.Text>Type:</Navbar.Text>

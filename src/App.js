@@ -5,6 +5,8 @@ import { initStorageSession } from './store/user-actions';
 import LoginPage from './pages/Login';
 import ContactsPage from './pages/Contacts';
 import ContactDetails from './pages/ContactDetails';
+import Starred from './pages/Starred';
+import Favorites from './pages/Favorites';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +23,8 @@ function App() {
         <>
           <Route exact path='/contacts' element={<ContactsPage />} />
           <Route exact path='/contacts/:id' element={<ContactDetails />} />
+          <Route exact path='/contacts/favorites' element={<Favorites />} />
+          <Route exact path='/contacts/starred' element={<Starred />} />
         </>
       )}
       <Route exact path='*' element={<Navigate to={'/'} replace />} />

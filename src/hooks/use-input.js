@@ -1,13 +1,9 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
 const initialState = {
   value: '',
   isValid: false,
   isTouched: false,
-};
-
-const initialize = (initialValue) => {
-  return { ...initialState, value: initialValue };
 };
 
 const inputStateReducer = (state, action) => {

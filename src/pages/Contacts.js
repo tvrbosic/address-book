@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,6 +26,7 @@ const ContactsPage = () => {
 
   const { sendRequest, isLoading } = useHttp();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchedDataHandler = useCallback(
     (data) => {
@@ -40,6 +42,14 @@ const ContactsPage = () => {
     );
   }, [sendRequest, fetchedDataHandler, userId]);
 
+  const favoritesClickHandler = () => {
+    navigate('/contacts/favorites');
+  };
+
+  const starClickHandler = () => {
+    navigate('/contacts/starred');
+  };
+
   const hideModalHandler = () => {
     setDisplayAddModal(false);
     setDisplayDeleteModal(false);
@@ -49,10 +59,15 @@ const ContactsPage = () => {
     <PageLayout>
       <Header />
       <MainPanel title='My Contacts'>
-        <Button variant='outline-warning' className='ms-auto'>
+        <Button
+          variant='outline-warning'
+          className='ms-auto'
+          onClick={starClickHandler}>
           Starred
         </Button>
-        <Button variant='outline-danger'>Favourites</Button>
+        <Button variant='outline-danger' onClick={favoritesClickHandler}>
+          Favorites
+        </Button>
         <Button
           variant='outline-success'
           onClick={() => setDisplayAddModal(true)}>

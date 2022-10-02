@@ -28,6 +28,13 @@ const ContactDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // If all values are 0, it is initial state and still hasn't been populated with data
+  const dataEmpty = [
+    displayedContact.id,
+    displayedContact.birth,
+    displayedContact.user,
+  ].every((val) => val === 0);
+
   const fetchedDataHandler = useCallback(
     (data) => {
       //console.log(data);
@@ -39,19 +46,13 @@ const ContactDetails = () => {
 
   // Populate data on manual url visit (due to redux state loss)
   useEffect(() => {
-    const dataEmpty = [
-      displayedContact.id,
-      displayedContact.birth,
-      displayedContact.user,
-    ].every((val) => val === 0);
-
     // Send request only if data is empty
     dataEmpty &&
       sendRequest(
         { url: `http://localhost:3001/contacts/${id}` },
         fetchedDataHandler
       );
-  }, [sendRequest, fetchedDataHandler, id]);
+  }, [sendRequest, fetchedDataHandler, id, dataEmpty]);
 
   const requestSuccessHandler = (data) => {
     // After successful database update, update app state
