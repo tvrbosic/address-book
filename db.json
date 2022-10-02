@@ -1,14 +1,19 @@
 {
   "users": [
     {
-      "email": "user@email.com",
-      "password": "$2a$10$7IAf4/A42XVJk8Hw53.ysuLOq87JbXhTH3pwJX0tdqKkoMZYw/RE6",
+      "email": "user1@email.com",
+      "password": "$2a$10$qWPC6KpXl.C1srzC/OMoke7PO2jcr5r28tNMSfSbqzNwTs4bd8JsS",
       "id": 1
+    },
+    {
+      "email": "user2@email.com",
+      "password": "$2a$10$OV.XBJSBGu9wJOo2qj2G8OEH.RLL/MZ.Ywa4jXWStrchUFDuAc4Re",
+      "id": 2
     }
   ],
   "contacts": [
     {
-      "name": "Leanne",
+      "name": "Judy",
       "surname": "Howell",
       "birth": 645573600000,
       "type": "mobile",
@@ -19,37 +24,433 @@
       "id": 1
     },
     {
-      "name": "Ervin",
+      "name": "Piety",
       "surname": "Graham",
       "birth": 576274660000,
-      "type": "mobile",
-      "contact": "+38511234567",
+      "type": "landline",
+      "contact": "8236419",
       "star": false,
       "favorite": false,
       "user": 1,
       "id": 2
     },
     {
-      "name": "Clementine",
+      "name": "Jeremias",
       "surname": "Dietrich",
       "birth": 843423460000,
       "type": "email",
-      "contact": "clementine.dietrich@mail.com",
+      "contact": "jeremias.dietrich@mail.com",
       "star": true,
       "favorite": true,
       "user": 1,
       "id": 3
     },
     {
-      "name": "Chelsey",
+      "name": "Ilma",
       "surname": "Runolfsdottir",
       "birth": 453420000000,
-      "type": "mobile",
-      "contact": "987456123",
+      "type": "pager",
+      "contact": "15487963",
       "star": false,
       "favorite": true,
       "user": 1,
       "id": 4
+    },
+    {
+      "name": "Leanne",
+      "surname": "Bardsley",
+      "birth": 452320000000,
+      "type": "mobile",
+      "contact": "+9865247516",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 5
+    },
+    {
+      "name": "Ervin",
+      "surname": "Scrivenor",
+      "birth": 668386800000,
+      "type": "mobile",
+      "contact": "+786451123",
+      "star": true,
+      "favorite": false,
+      "user": 1,
+      "id": 6
+    },
+    {
+      "name": "Ari",
+      "surname": "Bryson",
+      "birth": 968536800000,
+      "type": "landline",
+      "contact": "5549786",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 7
+    },
+    {
+      "name": "Lauren",
+      "surname": "Winthrop",
+      "birth": 439081200000,
+      "type": "email",
+      "contact": "lauren.winthrop@email.com",
+      "star": false,
+      "favorite": true,
+      "user": 1,
+      "id": 8
+    },
+    {
+      "name": "Tommy",
+      "surname": "Martel",
+      "birth": 387500400000,
+      "type": "mobile",
+      "contact": "+856973248",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 9
+    },
+    {
+      "name": "Germano",
+      "surname": "Mitchell",
+      "birth": 47775600000,
+      "type": "email",
+      "contact": "germano.mitchell@email.com",
+      "star": true,
+      "favorite": false,
+      "user": 1,
+      "id": 10
+    },
+    {
+      "name": "Sherill",
+      "surname": "Strickland",
+      "birth": 933458400000,
+      "type": "pager",
+      "contact": "973145",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 11
+    },
+    {
+      "name": "Talbot",
+      "surname": "Bauers",
+      "birth": 1043190000000,
+      "type": "mobile",
+      "contact": "+351264892",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 12
+    },
+    {
+      "name": "Otto",
+      "surname": "Garner",
+      "birth": 871077600000,
+      "type": "mobile",
+      "contact": "+542698763",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 13
+    },
+    {
+      "name": "Cosma",
+      "surname": "Beckett",
+      "birth": 362012400000,
+      "type": "landline",
+      "contact": "5684123",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 14
+    },
+    {
+      "name": "Elke",
+      "surname": "Norris",
+      "birth": 510361200000,
+      "type": "email",
+      "contact": "elke.norris@email.com",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 15
+    },
+    {
+      "name": "Jeni",
+      "surname": "Rimmer",
+      "birth": 645573600000,
+      "type": "mobile",
+      "contact": "+385481215567",
+      "star": false,
+      "favorite": true,
+      "user": 1,
+      "id": 16
+    },
+    {
+      "name": "Cerise",
+      "surname": "Rotolo",
+      "birth": 576274660000,
+      "type": "landline",
+      "contact": "65478932",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 17
+    },
+    {
+      "name": "Liliane",
+      "surname": "Knopf",
+      "birth": 843423460000,
+      "type": "email",
+      "contact": "liliane.knopf@mail.com",
+      "star": true,
+      "favorite": true,
+      "user": 1,
+      "id": 18
+    },
+    {
+      "name": "Nicolina",
+      "surname": "House",
+      "birth": 453420000000,
+      "type": "pager",
+      "contact": "45427913",
+      "star": false,
+      "favorite": true,
+      "user": 1,
+      "id": 19
+    },
+    {
+      "name": "Seth",
+      "surname": "Mayes",
+      "birth": 452320000000,
+      "type": "mobile",
+      "contact": "+9865247516",
+      "star": false,
+      "favorite": false,
+      "user": 1,
+      "id": 20
+    },
+    {
+      "name": "Piety",
+      "surname": "Runolfsdottir",
+      "birth": 645573600000,
+      "type": "mobile",
+      "contact": "+385981234567",
+      "star": false,
+      "favorite": true,
+      "user": 2,
+      "id": 1
+    },
+    {
+      "name": "Judy",
+      "surname": "Dietrich",
+      "birth": 576274660000,
+      "type": "landline",
+      "contact": "8236419",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 2
+    },
+    {
+      "name": "Jeremias",
+      "surname": "Graham",
+      "birth": 843423460000,
+      "type": "email",
+      "contact": "jeremias.dietrich@mail.com",
+      "star": true,
+      "favorite": true,
+      "user": 2,
+      "id": 3
+    },
+    {
+      "name": "Ilma",
+      "surname": "Howell",
+      "birth": 453420000000,
+      "type": "pager",
+      "contact": "15487963",
+      "star": false,
+      "favorite": true,
+      "user": 2,
+      "id": 4
+    },
+    {
+      "name": "Ervin",
+      "surname": "Bryson",
+      "birth": 452320000000,
+      "type": "mobile",
+      "contact": "+9865247516",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 5
+    },
+    {
+      "name": "Leanne",
+      "surname": "Scrivenor",
+      "birth": 668386800000,
+      "type": "mobile",
+      "contact": "+786451123",
+      "star": true,
+      "favorite": false,
+      "user": 2,
+      "id": 6
+    },
+    {
+      "name": "Ari",
+      "surname": "Bardsley",
+      "birth": 968536800000,
+      "type": "landline",
+      "contact": "5549786",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 7
+    },
+    {
+      "name": "Germano",
+      "surname": "Martel",
+      "birth": 439081200000,
+      "type": "email",
+      "contact": "germano.martel@email.com",
+      "star": false,
+      "favorite": true,
+      "user": 2,
+      "id": 8
+    },
+    {
+      "name": "Tommy",
+      "surname": "Winthrop",
+      "birth": 387500400000,
+      "type": "mobile",
+      "contact": "+856973248",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 9
+    },
+    {
+      "name": "Lauren",
+      "surname": "Mitchell",
+      "birth": 47775600000,
+      "type": "email",
+      "contact": "lauren.mitchell@email.com",
+      "star": true,
+      "favorite": false,
+      "user": 2,
+      "id": 10
+    },
+    {
+      "name": "Otto",
+      "surname": "Bauers",
+      "birth": 933458400000,
+      "type": "pager",
+      "contact": "973145",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 11
+    },
+    {
+      "name": "Talbot",
+      "surname": "Strickland",
+      "birth": 1043190000000,
+      "type": "mobile",
+      "contact": "+351264892",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 12
+    },
+    {
+      "name": "Sherill",
+      "surname": "Garner",
+      "birth": 871077600000,
+      "type": "mobile",
+      "contact": "+542698763",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 13
+    },
+    {
+      "name": "Elke",
+      "surname": "Rimmer",
+      "birth": 362012400000,
+      "type": "landline",
+      "contact": "5684123",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 14
+    },
+    {
+      "name": "Cosma",
+      "surname": "Norris",
+      "birth": 510361200000,
+      "type": "email",
+      "contact": "cosma.norris@email.com",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 15
+    },
+    {
+      "name": "Jeni",
+      "surname": "Beckett",
+      "birth": 645573600000,
+      "type": "mobile",
+      "contact": "+385481215567",
+      "star": false,
+      "favorite": true,
+      "user": 2,
+      "id": 16
+    },
+    {
+      "name": "Nicolina",
+      "surname": "Rotolo",
+      "birth": 576274660000,
+      "type": "landline",
+      "contact": "65478932",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 17
+    },
+    {
+      "name": "Cerise",
+      "surname": "Knopf",
+      "birth": 843423460000,
+      "type": "email",
+      "contact": "cerise.knopf@mail.com",
+      "star": true,
+      "favorite": true,
+      "user": 2,
+      "id": 18
+    },
+    {
+      "name": "Liliane",
+      "surname": "House",
+      "birth": 453420000000,
+      "type": "pager",
+      "contact": "45427913",
+      "star": false,
+      "favorite": true,
+      "user": 2,
+      "id": 19
+    },
+    {
+      "name": "Seth",
+      "surname": "Brewer",
+      "birth": 452320000000,
+      "type": "mobile",
+      "contact": "+9865247516",
+      "star": false,
+      "favorite": false,
+      "user": 2,
+      "id": 20
     }
   ]
 }

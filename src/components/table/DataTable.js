@@ -6,7 +6,7 @@ import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import PaginationControl from '../PaginationControl';
 
-const itemsPerPage = 20;
+const itemsPerPage = 10;
 
 const DataTable = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
