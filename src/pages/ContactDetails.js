@@ -94,7 +94,7 @@ const ContactDetails = () => {
     );
   };
 
-  const favouriteClickHandler = () => {
+  const favoriteClickHandler = () => {
     // Update contact in database
     sendRequest(
       {
@@ -103,7 +103,7 @@ const ContactDetails = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: { favourite: !displayedContact.favourite },
+        body: { favorite: !displayedContact.favorite },
       },
       requestSuccessHandler
     );
@@ -147,8 +147,8 @@ const ContactDetails = () => {
         />
         <ToggleIconButton
           icon='heart'
-          active={displayedContact.favourite}
-          onClick={favouriteClickHandler}
+          active={displayedContact.favorite}
+          onClick={favoriteClickHandler}
         />
       </MainPanel>
 

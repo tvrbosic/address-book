@@ -9,7 +9,7 @@ const initialState = {
     birth: 0,
     type: 'mobile',
     contact: '',
-    favourite: false,
+    favorite: false,
     star: false,
     user: 0,
     id: 0,
@@ -20,7 +20,7 @@ const initialState = {
     birth: 0,
     type: 'mobile',
     contact: '',
-    favourite: false,
+    favorite: false,
     star: false,
     user: 0,
     id: 0,
@@ -58,7 +58,7 @@ const contactsSlice = createSlice({
           birth: newContact.birth,
           type: newContact.type,
           contact: newContact.contact,
-          favourite: newContact.favourite,
+          favorite: newContact.favorite,
           star: newContact.star,
         });
       } else {
@@ -69,7 +69,7 @@ const contactsSlice = createSlice({
         existingContact.birth = newContact.birth;
         existingContact.type = newContact.type;
         existingContact.contact = newContact.contact;
-        existingContact.favourite = newContact.favourite;
+        existingContact.favorite = newContact.favorite;
         existingContact.star = newContact.star;
       }
     },

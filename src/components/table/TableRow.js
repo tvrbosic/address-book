@@ -47,7 +47,7 @@ const TableRow = ({ contact, deleteConfirmation }) => {
     );
   };
 
-  const favouriteClickHandler = (event) => {
+  const favoriteClickHandler = (event) => {
     // Stop propagation to prevent click event on <tr> and trigger displayContactDetails
     event.stopPropagation();
     // Update contact in database
@@ -58,7 +58,7 @@ const TableRow = ({ contact, deleteConfirmation }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: { favourite: !contact.favourite },
+        body: { favorite: !contact.favorite },
       },
       requestSuccessHandler
     );
@@ -85,8 +85,8 @@ const TableRow = ({ contact, deleteConfirmation }) => {
       <td className='d-flex justify-content-around align-items-center'>
         <ToggleIconButton
           icon='heart'
-          active={contact.favourite}
-          onClick={favouriteClickHandler}
+          active={contact.favorite}
+          onClick={favoriteClickHandler}
         />
         <ToggleIconButton
           icon='star'

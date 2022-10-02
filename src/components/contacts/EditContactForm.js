@@ -86,7 +86,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
       type: contactType,
       contact,
       star: displayedContact.star,
-      favourite: displayedContact.favourite,
+      favorite: displayedContact.favorite,
       user: displayedContact.user,
     });
   };

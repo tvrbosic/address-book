@@ -30,7 +30,7 @@ const AddContact = ({ userId, closeModal }) => {
         body: {
           ...contactData,
           star: false,
-          favourite: false,
+          favorite: false,
           user: parseInt(userId),
         },
       },

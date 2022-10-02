@@ -14,7 +14,7 @@
       "type": "mobile",
       "contact": "+385981234567",
       "star": false,
-      "favourite": true,
+      "favorite": true,
       "user": 1,
       "id": 1
     },
@@ -25,7 +25,7 @@
       "type": "mobile",
       "contact": "+38511234567",
       "star": false,
-      "favourite": false,
+      "favorite": false,
       "user": 1,
       "id": 2
     },
@@ -36,7 +36,7 @@
       "type": "email",
       "contact": "clementine.dietrich@mail.com",
       "star": true,
-      "favourite": true,
+      "favorite": true,
       "user": 1,
       "id": 3
     },
@@ -47,7 +47,7 @@
       "type": "mobile",
       "contact": "987456123",
       "star": false,
-      "favourite": true,
+      "favorite": true,
       "user": 1,
       "id": 4
     }
