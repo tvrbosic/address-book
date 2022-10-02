@@ -129,7 +129,7 @@ const ContactDetails = () => {
 
       <MainPanel
         title={`${displayedContact.name} ${displayedContact.surname} `}
-        className={`${styles['bg-gray-200']}`}>
+        className={`${styles['bg-green-100']}`}>
         <Button
           variant={`${editDisabled ? 'outline-primary' : 'primary'}`}
           className='ms-auto'

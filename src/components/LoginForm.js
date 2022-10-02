@@ -74,9 +74,9 @@ const LoginForm = (props) => {
           special character!
         </Form.Text>
       </Form.Group>
-      <Form.Group className='mt-3 text-center'>
-        <Button variant='primary' type='submit'>
-          Submit
+      <Form.Group className='mt-5 mb-3 text-center'>
+        <Button variant='primary' type='submit' className='w-100'>
+          Login
         </Button>
       </Form.Group>
     </Form>
