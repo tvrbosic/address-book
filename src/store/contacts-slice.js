@@ -79,14 +79,31 @@ const contactsSlice = createSlice({
       // Check sortAscending status for given attribute (action.payload)
       if (state.sortAscending[action.payload]) {
         // Sort ascending
-        state.list = state.list.sort((a, b) =>
-          ('' + a[sortAttribute]).localeCompare(b[sortAttribute])
-        );
+        if (action.payload === 'birth') {
+          console.log(state.list[1][sortAttribute]);
+          // Integer
+          state.list = state.list.sort(
+            (a, b) => a[sortAttribute] - b[sortAttribute]
+          );
+        } else {
+          // String
+          state.list = state.list.sort((a, b) =>
+            ('' + a[sortAttribute]).localeCompare(b[sortAttribute])
+          );
+        }
       } else {
         // Sort descending
-        state.list = state.list.sort((a, b) =>
-          ('' + b[sortAttribute]).localeCompare(a[sortAttribute])
-        );
+        if (action.payload === 'birth') {
+          // Integer
+          state.list = state.list.sort(
+            (a, b) => b[sortAttribute] - a[sortAttribute]
+          );
+        } else {
+          // String
+          state.list = state.list.sort((a, b) =>
+            ('' + b[sortAttribute]).localeCompare(a[sortAttribute])
+          );
+        }
       }
       // Toggle sortAscending state for given attribute (action.payload)
       state.sortAscending[action.payload] =
