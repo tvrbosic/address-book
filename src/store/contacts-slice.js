@@ -62,15 +62,7 @@ const contactsSlice = createSlice({
           star: newContact.star,
         });
       } else {
-        // Contact exists
-        existingContact.id = newContact.id;
-        existingContact.name = newContact.name;
-        existingContact.surname = newContact.surname;
-        existingContact.birth = newContact.birth;
-        existingContact.type = newContact.type;
-        existingContact.contact = newContact.contact;
-        existingContact.favorite = newContact.favorite;
-        existingContact.star = newContact.star;
+        Object.assign(existingContact, newContact);
       }
     },
     sortContacts(state, action) {
@@ -80,7 +72,6 @@ const contactsSlice = createSlice({
       if (state.sortAscending[action.payload]) {
         // Sort ascending
         if (action.payload === 'birth') {
-          console.log(state.list[1][sortAttribute]);
           // Integer
           state.list = state.list.sort(
             (a, b) => a[sortAttribute] - b[sortAttribute]

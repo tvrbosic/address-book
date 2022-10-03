@@ -7,6 +7,7 @@ import DatePicker from 'react-date-picker';
 // Customize DatePicker css
 import '../../sass/customized/_react-date-picker.scss';
 import styles from '../../sass/main.module.scss';
+import { contactsActions } from '../../store/contacts-slice';
 import { applyContactFilters } from '../../store/contacts-actions';
 
 const SearchPanel = () => {
@@ -21,6 +22,9 @@ const SearchPanel = () => {
     dispatch(
       applyContactFilters(contacts, searchedText, selectedDate, selectedType)
     );
+    if (!searchedText && !selectedDate && selectedType === 'all') {
+      dispatch(contactsActions.setFilteredList(null));
+    }
   }, [dispatch, contacts, searchedText, selectedDate, selectedType]);
 
   const searchTextHandler = (event) => {
