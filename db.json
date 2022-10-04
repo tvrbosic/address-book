@@ -19,7 +19,7 @@
       "type": "mobile",
       "contact": "+385981234567",
       "star": false,
-      "favorite": true,
+      "favorite": false,
       "user": 1,
       "id": 1
     },
@@ -52,7 +52,7 @@
       "type": "pager",
       "contact": "15487963",
       "star": false,
-      "favorite": false,
+      "favorite": true,
       "user": 1,
       "id": 4
     },
@@ -63,7 +63,7 @@
       "type": "mobile",
       "contact": "+9865247516",
       "star": false,
-      "favorite": true,
+      "favorite": false,
       "user": 1,
       "id": 5
     },
@@ -85,7 +85,7 @@
       "type": "landline",
       "contact": "5549786",
       "star": false,
-      "favorite": false,
+      "favorite": true,
       "user": 1,
       "id": 7
     },
@@ -107,7 +107,7 @@
       "type": "mobile",
       "contact": "+856973248",
       "star": true,
-      "favorite": false,
+      "favorite": true,
       "user": 1,
       "id": 9
     },
@@ -118,7 +118,7 @@
       "type": "email",
       "contact": "germano.mitchell@email.com",
       "star": true,
-      "favorite": false,
+      "favorite": true,
       "user": 1,
       "id": 10
     },

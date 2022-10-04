@@ -77,7 +77,7 @@ const ContactsPage = () => {
       <SearchPanel />
 
       <DataTable
-        data={filteredContacts || contacts}
+        data={filteredContacts}
         deleteConfirmation={() => setDisplayDeleteModal(true)}
       />
 

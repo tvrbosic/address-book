@@ -19,9 +19,6 @@ const Favorites = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
   const userId = useSelector((state) => state.user.id);
-  const contacts = useSelector((state) =>
-    state.contacts.list.filter((contact) => contact.favorite === true)
-  );
   const filteredContacts = useSelector((state) => state.contacts.filteredList);
 
   const { sendRequest, isLoading } = useHttp();
@@ -36,6 +33,7 @@ const Favorites = () => {
   );
 
   useEffect(() => {
+    // Add later this url part favorite=true&
     sendRequest(
       { url: `http://localhost:3001/contacts?favorite=true&user=${userId}` },
       fetchedDataHandler
@@ -76,10 +74,10 @@ const Favorites = () => {
         </Button>
       </MainPanel>
 
-      <SearchPanel />
+      <SearchPanel favorite={true} />
 
       <DataTable
-        data={filteredContacts || contacts}
+        data={filteredContacts}
         deleteConfirmation={() => setDisplayDeleteModal(true)}
       />
 

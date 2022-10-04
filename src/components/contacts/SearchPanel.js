@@ -10,22 +10,36 @@ import styles from '../../sass/main.module.scss';
 import { contactsActions } from '../../store/contacts-slice';
 import { applyContactFilters } from '../../store/contacts-actions';
 
-const SearchPanel = () => {
+const SearchPanel = ({ favorite, star }) => {
   const contacts = useSelector((state) => state.contacts.list);
   const [searchedText, setSearchedText] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedType, setSelectedType] = useState('all');
+  const [favoriteMark, setFavoriteMark] = useState(favorite);
+  const [starMark, setStarMark] = useState(star);
   const dispatch = useDispatch();
   let searchDebounceTimer;
 
   useEffect(() => {
     dispatch(
-      applyContactFilters(contacts, searchedText, selectedDate, selectedType)
+      applyContactFilters(
+        contacts,
+        searchedText,
+        selectedDate,
+        selectedType,
+        favoriteMark,
+        starMark
+      )
     );
-    if (!searchedText && !selectedDate && selectedType === 'all') {
-      dispatch(contactsActions.setFilteredList(null));
-    }
-  }, [dispatch, contacts, searchedText, selectedDate, selectedType]);
+  }, [
+    dispatch,
+    contacts,
+    searchedText,
+    selectedDate,
+    selectedType,
+    favoriteMark,
+    starMark,
+  ]);
 
   const searchTextHandler = (event) => {
     clearTimeout(searchDebounceTimer);

@@ -19,9 +19,6 @@ const Starred = () => {
   const [displayAddModal, setDisplayAddModal] = useState(false);
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
   const userId = useSelector((state) => state.user.id);
-  const contacts = useSelector((state) =>
-    state.contacts.list.filter((contact) => contact.star === true)
-  );
   const filteredContacts = useSelector((state) => state.contacts.filteredList);
 
   const { sendRequest, isLoading } = useHttp();
@@ -76,10 +73,10 @@ const Starred = () => {
         </Button>
       </MainPanel>
 
-      <SearchPanel />
+      <SearchPanel star={true} />
 
       <DataTable
-        data={filteredContacts || contacts}
+        data={filteredContacts}
         deleteConfirmation={() => setDisplayDeleteModal(true)}
       />
 
