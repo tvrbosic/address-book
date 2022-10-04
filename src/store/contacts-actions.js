@@ -56,20 +56,17 @@ const textFilter = (inputData, text) => {
   }
 };
 
-export const applyContactFilters = (
-  inputData,
-  text,
-  date,
-  type,
-  favorite = false,
-  star = false
-) => {
+export const applyContactFilters = (inputData, searchParams) => {
   return (dispatch) => {
     let resultData;
-    resultData = markFilter(inputData, favorite, star);
-    resultData = typeFilter(resultData, type);
-    resultData = dateFilter(resultData, date);
-    resultData = textFilter(resultData, text);
+    resultData = markFilter(
+      inputData,
+      searchParams.favorite,
+      searchParams.star
+    );
+    resultData = typeFilter(resultData, searchParams.type);
+    resultData = dateFilter(resultData, searchParams.date);
+    resultData = textFilter(resultData, searchParams.text);
     dispatch(contactsActions.setFilteredList(resultData));
   };
 };
