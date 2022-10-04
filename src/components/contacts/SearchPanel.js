@@ -7,8 +7,7 @@ import DatePicker from 'react-date-picker';
 // Customize DatePicker css
 import '../../sass/customized/_react-date-picker.scss';
 import styles from '../../sass/main.module.scss';
-import { contactsActions } from '../../store/contacts-slice';
-import { applyContactFilters } from '../../store/contacts-actions';
+import { contactsActions } from '../../store/contacts-actions';
 
 const SearchPanel = ({ favorite, star }) => {
   const contacts = useSelector((state) => state.contacts.list);
@@ -22,7 +21,7 @@ const SearchPanel = ({ favorite, star }) => {
 
   useEffect(() => {
     dispatch(
-      applyContactFilters(
+      contactsActions.applyContactFilters(
         contacts,
         searchedText,
         selectedDate,

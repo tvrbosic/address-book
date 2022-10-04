@@ -120,6 +120,6 @@ const contactsSlice = createSlice({
   },
 });
 
-export const contactsActions = contactsSlice.actions;
+export const contactsSliceActions = contactsSlice.actions;
 
 export default contactsSlice.reducer;

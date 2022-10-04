@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { Stack, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
 import styles from '../../sass/main.module.scss';
 import useHttp from '../../hooks/use-http';
-import { contactsActions } from '../../store/contacts-slice';
-import { useState } from 'react';
+import { contactsActions } from '../../store/contacts-actions';
 
 const DeleteContact = ({ closeClick, afterDelete }) => {
   const contactToDelete = useSelector(

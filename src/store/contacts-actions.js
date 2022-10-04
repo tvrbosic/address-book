@@ -1,4 +1,4 @@
-import { contactsActions } from './contacts-slice';
+import { contactsSliceActions } from './contacts-slice';
 
 const markFilter = (inputData, favorite, star) => {
   let data;
@@ -72,4 +72,9 @@ export const applyContactFilters = (
     resultData = textFilter(resultData, text);
     dispatch(contactsActions.setFilteredList(resultData));
   };
+};
+
+export const contactsActions = {
+  ...contactsSliceActions,
+  applyContactFilters,
 };

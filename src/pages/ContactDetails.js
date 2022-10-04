@@ -5,7 +5,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 import styles from '../sass/main.module.scss';
 import useHttp from '../hooks/use-http';
-import { contactsActions } from '../store/contacts-slice';
+import { contactsActions } from '../store/contacts-actions';
 import PageLayout from '../components/PageLayout';
 import Header from '../components/Header';
 import MainPanel from '../components/MainPanel';

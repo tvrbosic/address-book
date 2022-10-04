@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
 import useHttp from '../hooks/use-http';
-import { contactsActions } from '../store/contacts-slice';
+import { contactsActions } from '../store/contacts-actions';
 import PageLayout from '../components/PageLayout';
 import Header from '../components/Header';
 import MainPanel from '../components/MainPanel';
@@ -20,7 +20,6 @@ const ContactsPage = () => {
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
 
   const userId = useSelector((state) => state.user.id);
-  const contacts = useSelector((state) => state.contacts.list);
   const filteredContacts = useSelector((state) => state.contacts.filteredList);
 
   const { sendRequest, isLoading } = useHttp();

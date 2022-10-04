@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from '../../sass/main.module.scss';
-import { contactsActions } from '../../store/contacts-slice';
+import { contactsActions } from '../../store/contacts-actions';
 import SortedIcon from '../SortedIcon';
 
 const TableHeader = () => {

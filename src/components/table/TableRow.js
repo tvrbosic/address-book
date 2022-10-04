@@ -6,7 +6,7 @@ import { TrashFill } from 'react-bootstrap-icons';
 
 import styles from '../../sass/main.module.scss';
 import useHttp from '../../hooks/use-http';
-import { contactsActions } from '../../store/contacts-slice';
+import { contactsActions } from '../../store/contacts-actions';
 import TypeIcon from '../TypeIcon';
 import ToggleIconButton from '../ToggleIconButton';
 
