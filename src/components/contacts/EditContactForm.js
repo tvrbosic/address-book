@@ -22,7 +22,7 @@ const surnameValidator = (value) => {
   return notEmptyValidator(value) && maxLength30Validator(value);
 };
 
-const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
+const EditContactForm = ({ selectedContact, editDisabled, onSubmit }) => {
   const navigate = useNavigate();
 
   const {
@@ -32,7 +32,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
     onChange: nameChangeHandler,
     onBlur: nameBlurHandler,
     validate: validateName,
-  } = useInput(displayedContact.name, nameValidator);
+  } = useInput(selectedContact.name, nameValidator);
 
   const {
     value: surname,
@@ -41,7 +41,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
     onChange: surnameChangeHandler,
     onBlur: surnameBlurHandler,
     validate: validateSurname,
-  } = useInput(displayedContact.surname, surnameValidator);
+  } = useInput(selectedContact.surname, surnameValidator);
 
   const {
     value: birth,
@@ -50,7 +50,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
     onChange: birthChangeHandler,
     onBlur: birthBlurHandler,
     validate: validateBirth,
-  } = useDatepicker(new Date(displayedContact.birth), notEmptyValidator);
+  } = useDatepicker(new Date(selectedContact.birth), notEmptyValidator);
 
   const [contactType, setContactType] = useState('mobile');
 
@@ -61,7 +61,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
     onChange: contactChangeHandler,
     onBlur: contactBlurHandler,
     validate: validateContact,
-  } = useInput(displayedContact.contact, notEmptyValidator);
+  } = useInput(selectedContact.contact, notEmptyValidator);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -85,9 +85,9 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
       birth: birth.getTime(),
       type: contactType,
       contact,
-      star: displayedContact.star,
-      favorite: displayedContact.favorite,
-      user: displayedContact.user,
+      star: selectedContact.star,
+      favorite: selectedContact.favorite,
+      user: selectedContact.user,
     });
   };
 
@@ -141,7 +141,7 @@ const EditContactForm = ({ displayedContact, editDisabled, onSubmit }) => {
           <Form.Group className='mb-2'>
             <Form.Label>Type</Form.Label>
             <Form.Select
-              defaultValue={displayedContact.type}
+              defaultValue={selectedContact.type}
               onChange={(event) => setContactType(event.target.value)}
               disabled={editDisabled}>
               <option value='mobile'>Mobile</option>

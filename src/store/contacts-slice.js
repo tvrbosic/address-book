@@ -3,18 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   list: [],
   filteredList: [],
-  contactToDisplay: {
-    name: '',
-    surname: '',
-    birth: 0,
-    type: 'mobile',
-    contact: '',
-    favorite: false,
-    star: false,
-    user: 0,
-    id: 0,
-  },
-  contactToDelete: {
+  selectedContact: {
     name: '',
     surname: '',
     birth: 0,
@@ -41,8 +30,8 @@ const contactsSlice = createSlice({
     setContacts(state, action) {
       state.list = action.payload;
     },
-    setContactToDisplay(state, action) {
-      state.contactToDisplay = action.payload;
+    setSelectedContact(state, action) {
+      state.selectedContact = action.payload;
     },
     addOrUpdateContact(state, action) {
       const newContact = action.payload;
@@ -102,13 +91,6 @@ const contactsSlice = createSlice({
     },
     setFilteredList(state, action) {
       state.filteredList = action.payload;
-    },
-    setContactToDelete(state, action) {
-      const id = action.payload;
-      const existingContact = state.list.find((contact) => contact.id === id);
-      if (existingContact) {
-        state.contactToDelete = existingContact;
-      }
     },
     deleteContact(state, action) {
       const id = action.payload;

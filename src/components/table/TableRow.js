@@ -16,8 +16,7 @@ const TableRow = ({ contact, deleteConfirmation }) => {
   const dispatch = useDispatch();
 
   const displayContactDetails = () => {
-    dispatch(contactsActions.setContactToDisplay(contact));
-    dispatch(contactsActions.setContactToDelete(contact));
+    dispatch(contactsActions.setSelectedContact(contact));
     navigate(`/contacts/${contact.id}`);
   };
 
@@ -67,7 +66,7 @@ const TableRow = ({ contact, deleteConfirmation }) => {
   const trashClickHandler = (event) => {
     // Stop propagation to prevent click event on <tr> and trigger displayContactDetails
     event.stopPropagation();
-    dispatch(contactsActions.setContactToDelete(contact.id));
+    dispatch(contactsActions.setSelectedContact(contact));
     deleteConfirmation();
   };
 

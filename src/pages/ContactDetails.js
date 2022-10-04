@@ -21,8 +21,8 @@ const ContactDetails = () => {
   const [editDisabled, setEditDisabled] = useState(true);
   const [displayMessageModal, setDisplayMessageModal] = useState(false);
   const { id } = useParams();
-  const displayedContact = useSelector(
-    (state) => state.contacts.contactToDisplay
+  const selectedContact = useSelector(
+    (state) => state.contacts.selectedContact
   );
   const { sendRequest, isLoading, error } = useHttp();
   const dispatch = useDispatch();
@@ -30,16 +30,14 @@ const ContactDetails = () => {
 
   // If all values are 0, it is initial state and still hasn't been populated with data
   const dataEmpty = [
-    displayedContact.id,
-    displayedContact.birth,
-    displayedContact.user,
+    selectedContact.id,
+    selectedContact.birth,
+    selectedContact.user,
   ].every((val) => val === 0);
 
   const fetchedDataHandler = useCallback(
     (data) => {
-      //console.log(data);
-      dispatch(contactsActions.setContactToDisplay(data));
-      dispatch(contactsActions.setContactToDelete(data));
+      dispatch(contactsActions.setSelectedContact(data));
     },
     [dispatch]
   );
@@ -57,7 +55,6 @@ const ContactDetails = () => {
   const requestSuccessHandler = (data) => {
     // After successful database update, update app state
     dispatch(contactsActions.addOrUpdateContact(data));
-    dispatch(contactsActions.setContactToDisplay(data));
   };
 
   const updateContactRequest = (data) => {
@@ -88,7 +85,7 @@ const ContactDetails = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: { star: !displayedContact.star },
+        body: { star: !selectedContact.star },
       },
       requestSuccessHandler
     );
@@ -103,7 +100,7 @@ const ContactDetails = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: { favorite: !displayedContact.favorite },
+        body: { favorite: !selectedContact.favorite },
       },
       requestSuccessHandler
     );
@@ -111,7 +108,7 @@ const ContactDetails = () => {
 
   const deleteClickHandler = () => {
     setDisplayDeleteModal(true);
-    dispatch(contactsActions.setContactToDelete(displayedContact.id));
+    dispatch(contactsActions.setSelectedContact(selectedContact));
   };
 
   const afterDeleteHandler = () => {
@@ -128,7 +125,7 @@ const ContactDetails = () => {
       <Header />
 
       <MainPanel
-        title={`${displayedContact.name} ${displayedContact.surname} `}
+        title={`${selectedContact.name} ${selectedContact.surname} `}
         className={`${styles['bg-green-100']}`}>
         <Button
           variant={`${editDisabled ? 'outline-primary' : 'primary'}`}
@@ -142,12 +139,12 @@ const ContactDetails = () => {
         <span>Mark as: </span>
         <ToggleIconButton
           icon='star'
-          active={displayedContact.star}
+          active={selectedContact.star}
           onClick={starClickHandler}
         />
         <ToggleIconButton
           icon='heart'
-          active={displayedContact.favorite}
+          active={selectedContact.favorite}
           onClick={favoriteClickHandler}
         />
       </MainPanel>
@@ -156,7 +153,7 @@ const ContactDetails = () => {
         <Col xs={12} sm={1} md={2} lg={3} xl={4}></Col>
         <Col xs={12} sm={10} md={8} lg={6} xl={4} className='flex-grow-1'>
           <EditContactForm
-            displayedContact={displayedContact}
+            selectedContact={selectedContact}
             editDisabled={editDisabled}
             onSubmit={updateContactRequest}
           />

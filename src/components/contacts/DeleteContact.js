@@ -7,8 +7,8 @@ import useHttp from '../../hooks/use-http';
 import { contactsActions } from '../../store/contacts-actions';
 
 const DeleteContact = ({ closeClick, afterDelete }) => {
-  const contactToDelete = useSelector(
-    (state) => state.contacts.contactToDelete
+  const selectedContact = useSelector(
+    (state) => state.contacts.selectedContact
   );
   const [requestSent, setRequestSent] = useState();
   const { sendRequest, error } = useHttp();
@@ -16,7 +16,7 @@ const DeleteContact = ({ closeClick, afterDelete }) => {
 
   const requestSuccessHandler = () => {
     // After successful database update, update app state
-    dispatch(contactsActions.deleteContact(contactToDelete.id));
+    dispatch(contactsActions.deleteContact(selectedContact.id));
   };
 
   const confirmDeleteHandler = () => {
@@ -24,7 +24,7 @@ const DeleteContact = ({ closeClick, afterDelete }) => {
     // Delete contact from database
     sendRequest(
       {
-        url: `http://localhost:3001/contacts/${contactToDelete.id}`,
+        url: `http://localhost:3001/contacts/${selectedContact.id}`,
         method: 'DELETE',
       },
       requestSuccessHandler
@@ -35,7 +35,7 @@ const DeleteContact = ({ closeClick, afterDelete }) => {
     return (
       <>
         <span>Are you sure you want to delete contact</span>
-        <span className='mx-1 text-danger'>{`${contactToDelete.name} ${contactToDelete.surname}`}</span>
+        <span className='mx-1 text-danger'>{`${selectedContact.name} ${selectedContact.surname}`}</span>
         <span>?</span>
       </>
     );
@@ -57,7 +57,7 @@ const DeleteContact = ({ closeClick, afterDelete }) => {
       message = (
         <>
           <span>Contact</span>
-          <span className='mx-1 text-danger'>{`${contactToDelete.name} ${contactToDelete.surname}`}</span>
+          <span className='mx-1 text-danger'>{`${selectedContact.name} ${selectedContact.surname}`}</span>
           <span>successfully deleted!</span>
         </>
       );
