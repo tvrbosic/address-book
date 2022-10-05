@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { initStorageSession } from './store/user-actions';
@@ -9,12 +10,19 @@ import Starred from './pages/Starred';
 import Favorites from './pages/Favorites';
 
 function App() {
+  const userLoggedIn = useSelector((state) => state.user.loggedIn);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Initialize application session from existing one
-  dispatch(initStorageSession());
+  useEffect(() => {
+    dispatch(initStorageSession());
+  }, []);
 
-  const userLoggedIn = useSelector((state) => state.user.loggedIn);
+  // If session still valid redirect to contacts
+  useEffect(() => {
+    if (userLoggedIn) navigate('/contacts');
+  }, [userLoggedIn]);
 
   return (
     <Routes>
