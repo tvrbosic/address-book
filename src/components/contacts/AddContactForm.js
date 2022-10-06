@@ -3,7 +3,7 @@ import { Form, Stack, Row, Col, Button } from 'react-bootstrap';
 import DatePicker from 'react-date-picker';
 
 import useInput from '../../hooks/use-input';
-import useDatepicker from '../../hooks/use-datepciker';
+import useDatepicker from '../../hooks/use-datepicker';
 import {
   maxLength20Validator,
   maxLength30Validator,
