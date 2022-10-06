@@ -2,7 +2,7 @@
 
 Personal address book for managing contact data.
 
-Application was created with [React](https://reactjs.org/).
+Application was created with [React](https://reactjs.org/) and [React Bootstrap](https://react-bootstrap.github.io/).
 [Json Server Auth](https://github.com/jeremyben/json-server-auth) was used to simulate backend
 primarily because "out-of-the-box" support for JWT tokens.
 Application state was managed with [Redux Toolkit](https://redux-toolkit.js.org/).
