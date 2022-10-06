@@ -15,8 +15,14 @@ const useHttp = () => {
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
 
+      // Handle different errors
       if (!response.ok) {
-        throw new Error('Request resulted with an error!');
+        switch (response.status) {
+          case 400:
+            throw new Error('INVALID_CREDENTIALS');
+          default:
+            throw new Error('REQUEST_ERROR');
+        }
       }
 
       const data = await response.json();

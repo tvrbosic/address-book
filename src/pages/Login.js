@@ -35,6 +35,23 @@ const LoginPage = () => {
     );
   };
 
+  const renderError = () => {
+    if (error === 'INVALID_CREDENTIALS') {
+      return (
+        <Alert variant='danger text-center'>
+          Incorrect email and password. Please check entered data and try again!
+        </Alert>
+      );
+    } else {
+      // error === 'Failed to fetch'
+      return (
+        <Alert variant='danger text-center'>
+          Server did not respond. Please try again later!
+        </Alert>
+      );
+    }
+  };
+
   return (
     <Container fluid className={`${styles['bg-green-100']}`}>
       <Stack className='vh-100 justify-content-center align-items-center'>
@@ -45,12 +62,7 @@ const LoginPage = () => {
               <h3 className='text-center mt-3 mb-4 text-primary'>WELCOME</h3>
               <LoginForm onSubmit={loginRequest} />
             </Card>
-            {error && (
-              <Alert variant='danger text-center'>
-                Incorrect email and password. Please check entered data and try
-                again!
-              </Alert>
-            )}
+            {error && renderError()}
           </Col>
           <Col></Col>
         </Row>
